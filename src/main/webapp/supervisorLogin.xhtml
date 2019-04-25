@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Please enter your username and password to login Supervisor Console.
+        <h:form>
+            <br/>
+            username: <h:inputText
+                label = "username"
+                maxlength = "20"
+                required = "true"
+                requiredMessage = "Please enter your username."
+                title = "Full Name"
+                value = "#{supervisorLoginBean.username}">
+            </h:inputText>
+            <br/>
+            password: <h:inputText
+                label = "password"
+                maxlength = "20"
+                required = "true"
+                requiredMessage = "Please enter your password."
+                title = "Full Name"
+                value = "#{supervisorLoginBean.password}">
+            </h:inputText>
+            <br/>
+            <h:commandButton
+                action = "#{supervisorLoginBean.loginTapped()}"
+                label = "Submit Form"
+                title="Submit Form"
+                type="submit"
+                value="Submit Form">
+            </h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
