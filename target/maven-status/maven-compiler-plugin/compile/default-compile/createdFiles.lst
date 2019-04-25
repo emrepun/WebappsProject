@@ -1,4 +1,9 @@
-com/letstry/InitialBean.class
-com/letstry/SupervisorLoginBean.class
-com/letstry/AdminLoginBean.class
-com/letstry/StudentLoginBean.class
+com/webappsproject/entity/SystemUser.class
+com/webappsproject/jsf/AdminLoginBean.class
+com/webappsproject/jsf/SupervisorLoginBean.class
+com/webappsproject/entity/SystemUserGroup.class
+com/webappsproject/jsf/StudentLoginBean.class
+com/webappsproject/ejb/AdminService.class
+com/webappsproject/entity/SystemUserGroup_.class
+com/webappsproject/jsf/InitialBean.class
+com/webappsproject/entity/SystemUser_.class

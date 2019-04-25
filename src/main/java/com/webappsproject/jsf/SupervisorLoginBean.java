@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.letstry;
+package com.webappsproject.jsf;
 
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
@@ -15,16 +15,16 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class StudentLoginBean implements Serializable {
+public class SupervisorLoginBean implements Serializable {
     
     String username;
     String password;
     
-    public StudentLoginBean() {
+    public SupervisorLoginBean() {
         
     }
     
-    public StudentLoginBean(String username, String password) {
+    public SupervisorLoginBean(String username, String password) {
         this.username = username;
         this.password = password;
     }
@@ -46,6 +46,6 @@ public class StudentLoginBean implements Serializable {
     }
     
     public void loginTapped() {
-        System.out.println("student login tapped");
+        System.out.println("supervisor login tapped");
     }
 }
