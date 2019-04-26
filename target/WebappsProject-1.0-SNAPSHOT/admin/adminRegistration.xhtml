@@ -7,6 +7,26 @@
     </h:head>
     <h:body>
         Welcome to Admin Registration.
+        <br/>
+        <h:form>
+            Fill in the details and press the register button.
+            <br/>
+            <h:outputLabel for="username" value="*User name:"/>
+            <h:inputText id ="username" value="#{adminRegistrationBean.username}" title="Enter user name" required="true" requiredMessage="Mandatory Field"/>
+            &nbsp; 
+            <h:message style="color:red" for="username"/>
+            <br/>
+            <h:outputLabel for="userPassword" value="*Password:"/>
+            <h:inputSecret id ="userPassword" value="#{adminRegistrationBean.password}" title="Enter password" label="password" required="true" requiredMessage="Mandatory Field"/>
+            &nbsp; 
+            <h:message style="color:red" for="userPassword"/>
+            <br/>
+            <h:commandButton id="adminRegister" type="submit" value="Register" action="#{adminRegistrationBean.register}" title="Register User"/>
+            <br/>
+            <h:commandButton id="reset" type="reset" value="Reset Form" title="Reset Form"/>
+            <br/>
+            <h:button id="adminRegisterBackButton" title="Go Back" value="Go Back" outcome="adminHome"/>
+        </h:form>
     </h:body>
 </html>
 
