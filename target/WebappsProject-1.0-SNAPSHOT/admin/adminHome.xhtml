@@ -7,6 +7,18 @@
     </h:head>
     <h:body>
         Welcome to Admin Homepage
+        <br/>
+        What would you like to do today?
+        <br/>
+        <br/>
+        Create a new user:
+        <h:form>
+            <h:commandButton id="registerAdmin" type="submit" value="Register Admin" action="#{adminHomeBean.registerAdmin()}" title="Register Admin"/>
+            <br/>
+            <h:commandButton id="registerSupervisor" type="submit" value="Register Supervisor" action="#{adminHomeBean.registerSupervisor()}" title="Register Supervisor"/>
+            <br/>
+            <h:commandButton id="registerStudent" type="submit" value="Register Student" action="#{adminHomeBean.registerStudent()}" title="Register Student"/>
+        </h:form>
     </h:body>
 </html>
 

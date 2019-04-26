@@ -7,34 +7,7 @@
     </h:head>
     <h:body>
         Please enter your username and password to login Admin Console.
-        <!--<h:form>
-            <br/>
-            username: <h:inputText
-                label = "username"
-                maxlength = "20"
-                required = "true"
-                requiredMessage = "Please enter your username."
-                title = "Full Name"
-                value = "#{adminLoginBean.username}">
-            </h:inputText>
-            <br/>
-            password: <h:inputText
-                label = "password"
-                maxlength = "20"
-                required = "true"
-                requiredMessage = "Please enter your password."
-                title = "Full Name"
-                value = "#{adminLoginBean.password}">
-            </h:inputText>
-            <br/>
-            <h:commandButton
-                action = "#{adminLoginBean.loginTapped()}"
-                label = "Submit Form"
-                title="Submit Form"
-                type="submit"
-                value="Submit Form">
-            </h:commandButton>
-        </h:form>-->
+        
         <h2>Hello, please log in:</h2>
         <form action="j_security_check" name="loginForm">
             Username: <input type="text" name="j_username" size="20"/>

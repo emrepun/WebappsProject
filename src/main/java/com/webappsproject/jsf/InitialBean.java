@@ -50,6 +50,7 @@ public class InitialBean implements Serializable {
             //this method will disassociate the principal from the session (effectively logging him/her out)
             request.logout();
             request.getSession(true).invalidate();
+            //((HttpSession) context.getExternalContext().getSession(false)).invalidate();
             context.addMessage(null, new FacesMessage("User is logged out"));
         } catch (ServletException e) {
             context.addMessage(null, new FacesMessage("Logout failed."));
