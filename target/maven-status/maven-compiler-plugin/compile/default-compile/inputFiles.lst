@@ -4,4 +4,5 @@
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/InitialBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/AdminHomeBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/SupervisorLoginBean.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/entity/Admin.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/ejb/AdminService.java

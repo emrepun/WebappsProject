@@ -1,9 +1,11 @@
 com/webappsproject/entity/SystemUser.class
 com/webappsproject/jsf/SupervisorLoginBean.class
 com/webappsproject/entity/SystemUserGroup.class
+com/webappsproject/entity/Admin.class
 com/webappsproject/jsf/StudentLoginBean.class
 com/webappsproject/jsf/AdminHomeBean.class
 com/webappsproject/ejb/AdminService.class
 com/webappsproject/entity/SystemUserGroup_.class
+com/webappsproject/entity/Admin_.class
 com/webappsproject/jsf/InitialBean.class
 com/webappsproject/entity/SystemUser_.class

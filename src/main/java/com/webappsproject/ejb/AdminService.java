@@ -6,6 +6,7 @@
 package com.webappsproject.ejb;
 import com.webappsproject.entity.SystemUser;
 import com.webappsproject.entity.SystemUserGroup;
+import com.webappsproject.entity.Admin;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -39,6 +40,7 @@ public class AdminService {
         try {
             SystemUser sys_user;
             SystemUserGroup sys_user_group;
+            Admin admin;
 
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             String passwd = password;
@@ -52,9 +54,11 @@ public class AdminService {
 
             sys_user = new SystemUser(username, paswdToStoreInDB);
             sys_user_group = new SystemUserGroup(username, "admin");
+            admin = new Admin(username, paswdToStoreInDB);
             
             em.persist(sys_user);
             em.persist(sys_user_group);
+            em.persist(admin);
             System.out.println("Registration Completed");
             
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
