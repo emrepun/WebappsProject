@@ -11,7 +11,12 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,4 +42,17 @@ public class InitialBean implements Serializable {
     public String loginSelected() {
         return "login";
     }    
+    
+    public void logout() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+        try {
+            //this method will disassociate the principal from the session (effectively logging him/her out)
+            request.logout();
+            request.getSession(true).invalidate();
+            context.addMessage(null, new FacesMessage("User is logged out"));
+        } catch (ServletException e) {
+            context.addMessage(null, new FacesMessage("Logout failed."));
+        }
+    }
 }

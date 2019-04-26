@@ -7,9 +7,19 @@
     </h:head>
     <h:body>
         Welcome to Msc Project System!
-        Please login:
-        <h:form>
+        Please select user type:<br/>
+        <!--<h:form>
             <h:commandButton value="Login" action="#{initialBean.loginSelected()}"/>
+        </h:form> -->
+        <h:form>
+            <h:button value="Admin Login" outcome="admin"/>
+            <br/>
+            <h:button value="Supervisor Login" outcome="supervisor"/>
+            <br/>
+            <h:button value="Student Login" outcome="student"/>
+            <br/>
+            <br/>
+            <h:commandButton value="Logout" action="#{initialBean.logout()}"/>
         </h:form>
     </h:body>
 </html>
