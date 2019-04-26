@@ -13,8 +13,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 
 /**
  *
@@ -25,6 +28,8 @@ public class AdminService {
     
     @PersistenceContext
     EntityManager em;
+    
+    FacesContext context = FacesContext.getCurrentInstance();
     
     public AdminService() {
         
@@ -54,6 +59,10 @@ public class AdminService {
             
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
             Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
+            
+        } catch (PersistenceException pe) {
+            context.addMessage(null,
+                    new FacesMessage("Ne"));
         }
     }
 }

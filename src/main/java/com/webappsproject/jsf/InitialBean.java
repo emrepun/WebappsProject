@@ -34,16 +34,7 @@ public class InitialBean implements Serializable {
         adminService.registerAdmin("admin1", "admin1");
     }
 
-    public String administratorSelected() {
+    public String loginSelected() {
         return "login";
-    }
-    
-    public String supervisorSelected() {
-        return "supervisorLogin";
-    }
-    
-    public String studentSelected() {
-        return "studentLogin";
-    }
-    
+    }    
 }
