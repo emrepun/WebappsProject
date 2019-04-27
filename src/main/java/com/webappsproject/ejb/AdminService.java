@@ -14,11 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
 
 /**
  *
@@ -58,7 +55,7 @@ public class AdminService {
             em.persist(sys_user);
             em.persist(sys_user_group);
             em.persist(admin);
-            System.out.println("Registration Completed");
+            System.out.println("Admin Registration Completed");
             
         } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
             Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);

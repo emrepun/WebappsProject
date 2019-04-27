@@ -5,16 +5,21 @@
  */
 package com.webappsproject.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Email;
+import javax.validation.constraints.Email;
 
 /**
  *
@@ -42,12 +47,41 @@ public class Supervisor {
     @NotNull
     private String surname;
     
-    //@Email
+    @Email(message = "Please enter a valid email.")
     @NotNull
     private String email;
     
     @NotNull
     private String telephone;
+    
+    
+    @OneToMany(
+            cascade = CascadeType.DETACH,
+            orphanRemoval = true
+    )
+    @JoinColumn(name="post_id")
+    private List<Project> ownedProjects = new ArrayList<>();
+    
+    
+    @OneToMany(
+            cascade = CascadeType.DETACH,
+            orphanRemoval = true
+    )
+    @JoinColumn(name="post_id")
+    private List<Project> proposedProjects = new ArrayList<>();
+    
+    public Supervisor() {
+        
+    }
+
+    public Supervisor(String sussexId, String password, String name, String surname, String email, String telephone) {
+        this.sussexId = sussexId;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.telephone = telephone;
+    }
 
     public String getSussexId() {
         return sussexId;

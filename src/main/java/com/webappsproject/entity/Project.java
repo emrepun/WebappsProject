@@ -8,6 +8,8 @@ package com.webappsproject.entity;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,6 +34,22 @@ public class Project {
     @Column(name="title", unique=true)
     private String title;
     
+    @NotNull
+    private String description;
+    
+    @NotNull
+    private String requiredSkills;
+    
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private ProjectStatus status;
+    
+    public enum ProjectStatus {
+        ACCEPTED,
+        PROPOSED,
+        AVAILABLE
+    }
+    
     public Project() {
         
     }
@@ -48,11 +66,46 @@ public class Project {
         this.title = title;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRequiredSkills() {
+        return requiredSkills;
+    }
+
+    public void setRequiredSkills(String requiredSkills) {
+        this.requiredSkills = requiredSkills;
+    }
+
+    public ProjectStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProjectStatus status) {
+        this.status = status;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 13 * hash + Objects.hashCode(this.post_id);
-        hash = 13 * hash + Objects.hashCode(this.title);
+        hash = 79 * hash + Objects.hashCode(this.post_id);
+        hash = 79 * hash + Objects.hashCode(this.title);
+        hash = 79 * hash + Objects.hashCode(this.description);
+        hash = 79 * hash + Objects.hashCode(this.requiredSkills);
+        hash = 79 * hash + Objects.hashCode(this.status);
         return hash;
     }
 
@@ -71,10 +124,22 @@ public class Project {
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.requiredSkills, other.requiredSkills)) {
+            return false;
+        }
         if (!Objects.equals(this.post_id, other.post_id)) {
+            return false;
+        }
+        if (this.status != other.status) {
             return false;
         }
         return true;
     }
     
+    
+    
 }
+
