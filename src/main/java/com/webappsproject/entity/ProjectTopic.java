@@ -35,6 +35,9 @@ public class ProjectTopic {
     @Column(name="topicname", unique=true)
     private String topicname;
     
+    @NotNull
+    private String topicDescription;
+    
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true
@@ -46,8 +49,9 @@ public class ProjectTopic {
         
     }
 
-    public ProjectTopic(String topicname) {
+    public ProjectTopic(String topicname, String topicDescription) {
         this.topicname = topicname;
+        this.topicDescription = topicDescription;
     }
     
     public String getTopicname() {
@@ -56,6 +60,14 @@ public class ProjectTopic {
 
     public void setTopicname(String topicname) {
         this.topicname = topicname;
+    }
+
+    public String getTopicDescription() {
+        return topicDescription;
+    }
+
+    public void setTopicDescription(String topicDescription) {
+        this.topicDescription = topicDescription;
     }
 
     public List<Project> getProjects() {

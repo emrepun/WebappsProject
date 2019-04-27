@@ -27,13 +27,14 @@ public class ProjectTopicCreationBean implements Serializable {
     FacesContext context = FacesContext.getCurrentInstance();
     
     String topicname;
+    String topicDescription;
     
     public ProjectTopicCreationBean() {
         
     }
     
     public void register() {
-        int result = topicService.registerTopic(topicname);
+        int result = topicService.registerTopic(topicname, topicDescription);
         switch (result) {
             case 0:
                 context.addMessage(null, new FacesMessage("This topic already exists."));
@@ -51,5 +52,12 @@ public class ProjectTopicCreationBean implements Serializable {
     public void setTopicname(String topicname) {
         this.topicname = topicname;
     }
-    
+
+    public String getTopicDescription() {
+        return topicDescription;
+    }
+
+    public void setTopicDescription(String topicDescription) {
+        this.topicDescription = topicDescription;
+    }
 }

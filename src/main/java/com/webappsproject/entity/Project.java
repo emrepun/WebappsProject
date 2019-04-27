@@ -25,29 +25,29 @@ public class Project {
     @GeneratedValue
     private Long post_id;
     
-    private String name;
+    private String title;
     
     public Project() {
         
     }
     
-    public Project(String name) {
-        this.name = name;
+    public Project(String title) {
+        this.title = title;
     }
 
     public String getName() {
-        return name;
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String title) {
+        this.title = title;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 13 * hash + Objects.hashCode(this.post_id);
-        hash = 13 * hash + Objects.hashCode(this.name);
+        hash = 13 * hash + Objects.hashCode(this.title);
         return hash;
     }
 
@@ -63,7 +63,7 @@ public class Project {
             return false;
         }
         final Project other = (Project) obj;
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.title, other.title)) {
             return false;
         }
         if (!Objects.equals(this.post_id, other.post_id)) {

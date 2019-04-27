@@ -36,10 +36,11 @@ public class ProjectTopicService {
     }
     
     //return 1 for success, 0 for failure because duplicate.
-    public int registerTopic(String topicname) {
-        ProjectTopic topic = new ProjectTopic(topicname);
+    public int registerTopic(String topicname, String topicDescription) {
+        ProjectTopic topic = new ProjectTopic(topicname, topicDescription);
         try {
             em.persist(topic);
+            //use flush to execute persisting immediately so we can catch exceptions.
             em.flush();
         } catch (Exception e) {
             System.out.println("exception happened");
