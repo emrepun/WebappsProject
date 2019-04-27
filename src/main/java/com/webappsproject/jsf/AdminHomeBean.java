@@ -36,4 +36,9 @@ public class AdminHomeBean implements Serializable {
         return "studentRegistration";
     }
     
+    //redirect to project topic creation view
+    public String createProjectTopic() {
+        return "projectTopicCreation";
+    }
+    
 }
