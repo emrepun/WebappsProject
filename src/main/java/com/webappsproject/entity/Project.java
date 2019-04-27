@@ -6,25 +6,30 @@
 package com.webappsproject.entity;
 
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
 /**
  *
  * @author emrehavan
  */
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames={"name"})})
+@Table(uniqueConstraints={@UniqueConstraint(columnNames={"title"})})
 public class Project {
     
     @Id
     @GeneratedValue
     private Long post_id;
     
+    //make sure there are no duplicates in DB by title column
+    @NotNull
+    @Column(name="title", unique=true)
     private String title;
     
     public Project() {

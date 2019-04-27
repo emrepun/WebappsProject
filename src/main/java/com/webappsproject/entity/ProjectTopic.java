@@ -31,6 +31,7 @@ public class ProjectTopic {
     @GeneratedValue
     private Long id;
     
+    //make sure there are no duplicates in DB by topicname column
     @NotNull
     @Column(name="topicname", unique=true)
     private String topicname;

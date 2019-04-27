@@ -28,6 +28,7 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    //make sure there are no duplicates in DB by username column
     @NotNull
     @Column(name="username", unique=true)
     private String username;
