@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -32,10 +34,17 @@ public class ProjectTopicDisplayBean implements Serializable {
     @EJB
     ProjectListService projectListService;
     
+    FacesContext context = FacesContext.getCurrentInstance();
+    
     @PostConstruct
     public void init() {
         projectTopics = projectTopicService.getProjectTopicList(); 
-        selected = projectTopics.get(0).getTopicname();
+        if (projectTopics.isEmpty()) {
+            context.addMessage(null, new FacesMessage("There are no project topics."));
+            selected = "";
+        } else {
+            selected = projectTopics.get(0).getTopicname();
+        }
         projectListService.setSelectedProjectTopic(selected);
     }
     

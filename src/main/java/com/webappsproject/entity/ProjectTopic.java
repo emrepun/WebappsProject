@@ -44,10 +44,11 @@ public class ProjectTopic {
     private String topicDescription;
     
     @OneToMany(
+            mappedBy = "projectTopic",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    @JoinColumn(name="post_id")
+    //@JoinColumn(name="post_id")
     private List<Project> projects = new ArrayList<>();
     
     public ProjectTopic() {
@@ -57,6 +58,14 @@ public class ProjectTopic {
     public ProjectTopic(String topicname, String topicDescription) {
         this.topicname = topicname;
         this.topicDescription = topicDescription;
+    }
+    
+    public void addProject(Project project) {
+        projects.add(project);
+    }
+    
+    public void removeProject(Project project) {
+        projects.remove(project);
     }
     
     public String getTopicname() {

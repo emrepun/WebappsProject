@@ -10,9 +10,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -27,7 +30,7 @@ public class Project {
     
     @Id
     @GeneratedValue
-    private Long post_id;
+    private Long id;
     
     //make sure there are no duplicates in DB by title column
     @NotNull
@@ -43,6 +46,10 @@ public class Project {
     @NotNull
     @Enumerated(EnumType.STRING)
     private ProjectStatus status;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="topic_id")
+    private ProjectTopic projectTopic;
     
     public enum ProjectStatus {
         ACCEPTED,
@@ -98,10 +105,18 @@ public class Project {
         this.status = status;
     }
 
+    public ProjectTopic getProjectTopic() {
+        return projectTopic;
+    }
+
+    public void setProjectTopic(ProjectTopic projectTopic) {
+        this.projectTopic = projectTopic;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.post_id);
+        hash = 79 * hash + Objects.hashCode(this.id);
         hash = 79 * hash + Objects.hashCode(this.title);
         hash = 79 * hash + Objects.hashCode(this.description);
         hash = 79 * hash + Objects.hashCode(this.requiredSkills);
@@ -130,7 +145,7 @@ public class Project {
         if (!Objects.equals(this.requiredSkills, other.requiredSkills)) {
             return false;
         }
-        if (!Objects.equals(this.post_id, other.post_id)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         if (this.status != other.status) {
