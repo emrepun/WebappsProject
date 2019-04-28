@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -25,6 +26,9 @@ import javax.validation.constraints.Email;
  *
  * @author emrehavan
  */
+
+@NamedQuery(name="getAllSupervisors", query="SELECT c FROM Supervisor c ")
+
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"sussexId"})})
 public class Supervisor {

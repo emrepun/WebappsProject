@@ -10,6 +10,7 @@ import com.webappsproject.entity.Admin;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,5 +62,9 @@ public class AdminService {
             Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
             
         }
+    }
+    
+    public synchronized List<Admin> getAdminList() {
+        return em.createNamedQuery("getAllAdmins").getResultList();
     }
 }

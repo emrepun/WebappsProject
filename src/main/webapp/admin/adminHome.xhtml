@@ -25,6 +25,18 @@
         <h:form>
             <h:commandButton id="createProjectTopic" type="submit" value="Create Project Topic" action="#{adminHomeBean.createProjectTopic()}" title="Create a Project Topic"/>
         </h:form>
+        <br/>
+        <br/>
+        Access reports:
+        <h:form>
+            <h:commandButton id="displayAdmins" type="submit" value="Display Admins" action="#{adminHomeBean.displayAdmins()}" title="Display Admins"/>
+        </h:form>
+        <h:form>
+            <h:commandButton id="displaySupervisors" type="submit" value="Display Supervisors" action="#{adminHomeBean.displaySupervisors()}" title="Display Supervisors"/>
+        </h:form>
+        <h:form>
+            <h:commandButton id="displayStudents" type="submit" value="Display Students" action="#{adminHomeBean.displayStudents()}" title="Display Supervisors"/>
+        </h:form>
     </h:body>
 </html>
 

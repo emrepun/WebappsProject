@@ -10,6 +10,7 @@ import com.webappsproject.entity.Supervisor;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -70,5 +71,9 @@ public class SupervisorService {
             return 0;
             
         }
+    }
+    
+    public synchronized List<Supervisor> getSupervisorList() {
+        return em.createNamedQuery("getAllSupervisors").getResultList();
     }
 }

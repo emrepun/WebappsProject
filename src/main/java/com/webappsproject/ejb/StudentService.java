@@ -7,11 +7,8 @@ package com.webappsproject.ejb;
 import com.webappsproject.entity.SystemUser;
 import com.webappsproject.entity.SystemUserGroup;
 import com.webappsproject.entity.Student;
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -69,6 +66,10 @@ public class StudentService {
         } catch (Exception e) {
             return 0;
         }
+    }
+    
+    public synchronized List<Student> getStudentList() {
+        return em.createNamedQuery("getAllStudents").getResultList();
     }
     
 }
