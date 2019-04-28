@@ -7,6 +7,14 @@
     </h:head>
     <h:body>
         Welcome to Supervisor Homepage
+        <br/>
+        What would you like to do today?
+        <br/>
+        <br/>
+        Create a new project topic:
+        <h:form>
+            <h:commandButton id="createProjectTopic" type="submit" value="Create Project Topic" action="#{supervisorHomeBean.createProjectTopic()}" title="Create a Project Topic"/>
+        </h:form>
     </h:body>
 </html>
 

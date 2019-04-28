@@ -3,6 +3,7 @@
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/StudentLoginBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/entity/SystemUserGroup.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/SupervisorLoginBean.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/SupervisorHomeBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/ejb/AdminService.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/ejb/ProjectTopicService.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/SupervisorRegistrationBean.java
