@@ -8,9 +8,12 @@ package com.webappsproject.jsf;
 import com.webappsproject.ejb.AdminService;
 import com.webappsproject.ejb.StudentService;
 import com.webappsproject.ejb.SupervisorService;
+import com.webappsproject.ejb.ProjectTopicService;
 import com.webappsproject.entity.Admin;
 import com.webappsproject.entity.Supervisor;
 import com.webappsproject.entity.Student;
+import com.webappsproject.entity.ProjectTopic;
+import com.webappsproject.entity.Project;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
@@ -33,6 +36,9 @@ public class AdminHomeBean implements Serializable {
     
     @EJB
     StudentService studentService;
+    
+    @EJB
+    ProjectTopicService projectTopicService;
     
     public AdminHomeBean() {
         
@@ -70,6 +76,10 @@ public class AdminHomeBean implements Serializable {
         return "studentList";
     }
     
+    public String displayProjectTopics() {
+        return "projectTopicList";
+    }
+    
     public List<Admin> getAdminList() {
         return adminService.getAdminList();
     }
@@ -81,4 +91,9 @@ public class AdminHomeBean implements Serializable {
     public List<Student> getStudentList() {
         return studentService.getStudentList();
     }
+    
+    public List<ProjectTopic> getProjectTopicList() {
+        return projectTopicService.getProjectTopicList();
+    }
+    
 }

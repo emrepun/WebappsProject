@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -23,6 +24,9 @@ import javax.validation.constraints.NotNull;
  *
  * @author emrehavan
  */
+
+@NamedQuery(name="getAllProjectTopics", query="SELECT c FROM ProjectTopic c ")
+
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"topicname"})})
 public class ProjectTopic {
@@ -77,6 +81,11 @@ public class ProjectTopic {
 
     public void setProjects(List<Project> projects) {
         this.projects = projects;
+    }
+
+    @Override
+    public String toString() {
+        return this.topicname + " (" + this.topicDescription + ")";
     }
     
 }

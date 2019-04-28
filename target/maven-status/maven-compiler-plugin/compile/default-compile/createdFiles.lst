@@ -1,6 +1,7 @@
 com/webappsproject/entity/Supervisor.class
 com/webappsproject/jsf/SupervisorHomeBean.class
 com/webappsproject/entity/SystemUser_.class
+com/webappsproject/jsf/ProjectTopicDisplayBean.class
 com/webappsproject/jsf/StudentRegistrationBean.class
 com/webappsproject/jsf/AdminRegistrationBean.class
 com/webappsproject/entity/Student.class

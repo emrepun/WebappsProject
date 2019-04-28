@@ -6,20 +6,10 @@
 package com.webappsproject.ejb;
 import com.webappsproject.entity.ProjectTopic;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
+import java.util.List;
 import javax.ejb.Stateless;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
-import org.eclipse.persistence.exceptions.DatabaseException;
 
 /**
  *
@@ -50,6 +40,10 @@ public class ProjectTopicService {
         System.out.println("Project Topic Created.");
         return 1;
         
+    }
+    
+    public synchronized List<ProjectTopic> getProjectTopicList() {
+        return em.createNamedQuery("getAllProjectTopics").getResultList();
     }
     
 }
