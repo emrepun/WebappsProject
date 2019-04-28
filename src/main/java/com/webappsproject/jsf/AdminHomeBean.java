@@ -44,42 +44,6 @@ public class AdminHomeBean implements Serializable {
         
     }
     
-    //redirect to admin registration view
-    public String registerAdmin() {
-        return "adminRegistration";
-    }
-    
-    //redirect to supervisor registration view
-    public String registerSupervisor() {
-        return "supervisorRegistration";
-    }
-    
-    //redirect to student registration view
-    public String registerStudent() {
-        return "studentRegistration";
-    }
-    
-    //redirect to project topic creation view
-    public String createProjectTopic() {
-        return "projectTopicCreation";
-    }
-    
-    public String displayAdmins() {
-        return "adminList";
-    }
-    
-    public String displaySupervisors() {
-        return "supervisorList";
-    }
-    
-    public String displayStudents() {
-        return "studentList";
-    }
-    
-    public String displayProjectTopics() {
-        return "projectTopicList";
-    }
-    
     public List<Admin> getAdminList() {
         return adminService.getAdminList();
     }

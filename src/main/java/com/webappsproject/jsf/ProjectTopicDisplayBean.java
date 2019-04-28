@@ -36,6 +36,7 @@ public class ProjectTopicDisplayBean implements Serializable {
     public void init() {
         projectTopics = projectTopicService.getProjectTopicList(); 
         selected = projectTopics.get(0).getTopicname();
+        projectListService.setSelectedProjectTopic(selected);
     }
     
     public ProjectTopicDisplayBean() {

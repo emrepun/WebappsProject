@@ -13,32 +13,32 @@
         <br/>
         Create a new user:
         <h:form>
-            <h:commandButton id="registerAdmin" type="submit" value="Register Admin" action="#{adminHomeBean.registerAdmin()}" title="Register Admin"/>
+            <h:commandButton id="registerAdmin" type="submit" value="Register Admin" action="adminRegistration" title="Register Admin"/>
             <br/>
-            <h:commandButton id="registerSupervisor" type="submit" value="Register Supervisor" action="#{adminHomeBean.registerSupervisor()}" title="Register Supervisor"/>
+            <h:commandButton id="registerSupervisor" type="submit" value="Register Supervisor" action="supervisorRegistration" title="Register Supervisor"/>
             <br/>
-            <h:commandButton id="registerStudent" type="submit" value="Register Student" action="#{adminHomeBean.registerStudent()}" title="Register Student"/>
+            <h:commandButton id="registerStudent" type="submit" value="Register Student" action="studentRegistration" title="Register Student"/>
         </h:form>
         <br/>
         <br/>
         Create a new project topic:
         <h:form>
-            <h:commandButton id="createProjectTopic" type="submit" value="Create Project Topic" action="#{adminHomeBean.createProjectTopic()}" title="Create a Project Topic"/>
+            <h:commandButton id="createProjectTopic" type="submit" value="Create Project Topic" action="projectTopicCreation" title="Create a Project Topic"/>
         </h:form>
         <br/>
         <br/>
         Access reports:
         <h:form>
-            <h:commandButton id="displayAdmins" type="submit" value="Display Admins" action="#{adminHomeBean.displayAdmins()}" title="Display Admins"/>
+            <h:commandButton id="displayAdmins" type="submit" value="Display Admins" action="adminList" title="Display Admins"/>
         </h:form>
         <h:form>
-            <h:commandButton id="displaySupervisors" type="submit" value="Display Supervisors" action="#{adminHomeBean.displaySupervisors()}" title="Display Supervisors"/>
+            <h:commandButton id="displaySupervisors" type="submit" value="Display Supervisors" action="supervisorList" title="Display Supervisors"/>
         </h:form>
         <h:form>
-            <h:commandButton id="displayStudents" type="submit" value="Display Students" action="#{adminHomeBean.displayStudents()}" title="Display Supervisors"/>
+            <h:commandButton id="displayStudents" type="submit" value="Display Students" action="studentList" title="Display Supervisors"/>
         </h:form>
         <h:form>
-            <h:commandButton id="displayProjectTopics" type="submit" value="Display Project Topics" action="#{adminHomeBean.displayProjectTopics()}" title="Display Project Topics"/>
+            <h:commandButton id="displayProjectTopics" type="submit" value="Display Project Topics" action="projectTopicList" title="Display Project Topics"/>
         </h:form>
     </h:body>
 </html>
