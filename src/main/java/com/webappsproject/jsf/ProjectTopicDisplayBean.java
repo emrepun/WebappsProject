@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.webappsproject.jsf;
+import com.webappsproject.ejb.ProjectListService;
 import com.webappsproject.ejb.ProjectTopicService;
 import com.webappsproject.entity.ProjectTopic;
 
@@ -22,30 +23,37 @@ import javax.ejb.EJB;
 @RequestScoped
 public class ProjectTopicDisplayBean implements Serializable {
     
-    private String name;
+    private String selected;
     private List<ProjectTopic> projectTopics;
     
     @EJB
     ProjectTopicService projectTopicService;
     
+    @EJB
+    ProjectListService projectListService;
+    
     @PostConstruct
     public void init() {
-        name = "Project Topics";
-        projectTopics = projectTopicService.getProjectTopicList();       
+        projectTopics = projectTopicService.getProjectTopicList(); 
+        selected = projectTopics.get(0).getTopicname();
     }
     
     public ProjectTopicDisplayBean() {
         
     }
 
-    public String getName() {
-        return name;
+    public String getSelected() {
+        return selected;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSelected(String selected) {
+        System.out.println("selected: " + selected);
+        
+        //update the selected project topic of the service used to display all projects.
+        projectListService.setSelectedProjectTopic(selected);
+        this.selected = selected;
     }
-
+    
     public List<ProjectTopic> getProjectTopics() {
         return projectTopics;
     }

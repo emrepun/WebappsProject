@@ -14,8 +14,10 @@
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/entity/Project.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/entity/ProjectTopic.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/entity/SystemUser.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/ProjectListDisplayBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/InitialBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/AdminHomeBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/entity/Admin.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/ejb/SupervisorService.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/ejb/ProjectListService.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/WebappsProject/src/main/java/com/webappsproject/jsf/StudentRegistrationBean.java

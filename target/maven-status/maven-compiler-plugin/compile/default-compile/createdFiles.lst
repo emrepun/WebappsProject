@@ -1,3 +1,4 @@
+com/webappsproject/ejb/ProjectListService.class
 com/webappsproject/entity/Supervisor.class
 com/webappsproject/jsf/SupervisorHomeBean.class
 com/webappsproject/entity/SystemUser_.class
@@ -5,6 +6,7 @@ com/webappsproject/jsf/ProjectTopicDisplayBean.class
 com/webappsproject/jsf/StudentRegistrationBean.class
 com/webappsproject/jsf/AdminRegistrationBean.class
 com/webappsproject/entity/Student.class
+com/webappsproject/jsf/ProjectListDisplayBean.class
 com/webappsproject/ejb/SupervisorService.class
 com/webappsproject/entity/SystemUserGroup.class
 com/webappsproject/entity/Admin.class

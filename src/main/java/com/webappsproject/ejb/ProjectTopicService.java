@@ -45,5 +45,5 @@ public class ProjectTopicService {
     public synchronized List<ProjectTopic> getProjectTopicList() {
         return em.createNamedQuery("getAllProjectTopics").getResultList();
     }
-    
+
 }
