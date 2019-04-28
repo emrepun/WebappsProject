@@ -7,16 +7,26 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        
         Project Topics:
         <br/>
+        <h:dataTable value="#{projectTopicDisplayBean.projectTopics}" var="projectTopic">
+            <h:column>    				
+                <f:facet name="header">Topic</f:facet>    				
+                    #{projectTopic.topicname}
+            </h:column>
+            <h:column>    				
+                <f:facet name="header">Description</f:facet>    				
+                    #{projectTopic.topicDescription}
+            </h:column>
+        </h:dataTable>
+        <br/>
+        Select a project topic to display proposed projects.
         <h:form>
             <h:selectOneMenu value ="#{projectTopicDisplayBean.name}">
                 <f:selectItems value="#{projectTopicDisplayBean.projectTopics}" />
             </h:selectOneMenu>
         </h:form>
-        <br/>
-        
-        Select a project topic to display proposed projects.
         <h:form>
             <h:commandButton value = "Show Proposals" action = "projectList" /> 
         </h:form>
