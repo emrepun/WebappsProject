@@ -40,7 +40,4 @@ public class ProjectListDisplayBean {
     public void setTopicName(String topicName) {
         this.topicName = topicName;
     }
-    
-    
-    
 }

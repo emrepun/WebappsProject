@@ -17,10 +17,12 @@ com/webappsproject/entity/ProjectTopic_.class
 com/webappsproject/entity/ProjectTopic.class
 com/webappsproject/entity/Project$ProjectStatus.class
 com/webappsproject/ejb/AdminService.class
+com/webappsproject/ejb/ProjectCreationService.class
 com/webappsproject/jsf/InitialBean.class
 com/webappsproject/entity/SystemUser.class
 com/webappsproject/ejb/ProjectTopicService.class
 com/webappsproject/jsf/ProjectTopicCreationBean.class
+com/webappsproject/jsf/ProjectProposalCreationBean.class
 com/webappsproject/jsf/SupervisorLoginBean.class
 com/webappsproject/jsf/StudentLoginBean.class
 com/webappsproject/entity/Project_.class

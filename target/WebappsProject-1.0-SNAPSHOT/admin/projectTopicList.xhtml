@@ -27,7 +27,6 @@
         <h:form>
             <h:selectOneMenu value ="#{projectTopicDisplayBean.selected}">
                 <f:selectItems value="#{projectTopicDisplayBean.projectTopics}" var="topic" itemValue="#{topic.topicname}"/>
-                <f:ajax execute="@this" render="projectList"/>
             </h:selectOneMenu>
         </h:form>
         <h:form>

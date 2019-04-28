@@ -20,9 +20,4 @@ public class SupervisorHomeBean {
         
     }
     
-    //redirect to project topic creation view
-    public String createProjectTopic() {
-        return "supervisorProjectTopicCreation";
-    }
-    
 }

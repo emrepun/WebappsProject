@@ -61,8 +61,11 @@ public class Project {
         
     }
     
-    public Project(String title) {
+    public Project(String title, String description, String requiredSkills) {
         this.title = title;
+        this.description = description;
+        this.requiredSkills = requiredSkills;
+        this.status = ProjectStatus.AVAILABLE;
     }
 
     public String getName() {

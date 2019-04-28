@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,7 +26,11 @@ import javax.validation.constraints.NotNull;
  * @author emrehavan
  */
 
-@NamedQuery(name="getAllProjectTopics", query="SELECT c FROM ProjectTopic c ")
+@NamedQueries({
+    @NamedQuery(name="getAllProjectTopics", query="SELECT c FROM ProjectTopic c "),
+    @NamedQuery(name="findProjectTopicWithName", query="SELECT c FROM ProjectTopic c WHERE c.topicname LIKE :topicname"
+)
+})
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"topicname"})})
