@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.webappsproject.jsf;
-import com.webappsproject.ejb.SupervisorService;
+import com.webappsproject.ejb.StudentService;
 
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -19,10 +19,10 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class SupervisorRegistrationBean implements Serializable {
+public class StudentRegistrationBean implements Serializable {
     
     @EJB
-    SupervisorService supervisorService;
+    StudentService studentService;
     
     FacesContext context = FacesContext.getCurrentInstance();
     
@@ -31,20 +31,20 @@ public class SupervisorRegistrationBean implements Serializable {
     String name;
     String surname;
     String email;
-    String telephone;
+    String course;
     
-    public SupervisorRegistrationBean() {
+    public StudentRegistrationBean() {
         
     }
     
     public void register() {
-        int result = supervisorService.registerSupervisor(sussexId, password, name, surname, email, telephone);
+        int result = studentService.registerStudent(sussexId, password, name, surname, email, course);
         switch (result) {
             case 0:
-                context.addMessage(null, new FacesMessage("Email must be valid."));
+                context.addMessage(null, new FacesMessage("Email must be valid"));
                 break;
             case 1:
-                context.addMessage(null, new FacesMessage("Supervisor is registered."));
+                context.addMessage(null, new FacesMessage("Student is registered."));
                 break;
         }
     }
@@ -89,11 +89,11 @@ public class SupervisorRegistrationBean implements Serializable {
         this.email = email;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getCourse() {
+        return course;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setCourse(String course) {
+        this.course = course;
     }
 }

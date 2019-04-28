@@ -1,7 +1,9 @@
 com/webappsproject/entity/Supervisor.class
 com/webappsproject/jsf/SupervisorHomeBean.class
 com/webappsproject/entity/SystemUser_.class
+com/webappsproject/jsf/StudentRegistrationBean.class
 com/webappsproject/jsf/AdminRegistrationBean.class
+com/webappsproject/entity/Student.class
 com/webappsproject/ejb/SupervisorService.class
 com/webappsproject/entity/SystemUserGroup.class
 com/webappsproject/entity/Admin.class
@@ -20,5 +22,7 @@ com/webappsproject/jsf/SupervisorLoginBean.class
 com/webappsproject/jsf/StudentLoginBean.class
 com/webappsproject/entity/Project_.class
 com/webappsproject/entity/Supervisor_.class
+com/webappsproject/entity/Student_.class
 com/webappsproject/entity/Admin_.class
 com/webappsproject/entity/Project.class
+com/webappsproject/ejb/StudentService.class

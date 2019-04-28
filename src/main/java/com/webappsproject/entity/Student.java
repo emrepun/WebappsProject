@@ -11,11 +11,13 @@ import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -27,7 +29,7 @@ import javax.validation.constraints.Email;
  */
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"sussexId"})})
-public class Supervisor {
+public class Student {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,35 +54,25 @@ public class Supervisor {
     private String email;
     
     @NotNull
-    private String telephone;
+    private String course;
     
-    // projects created "by" the supervisor.
-    @OneToMany(
-            cascade = CascadeType.DETACH,
-            orphanRemoval = true
-    )
-    @JoinColumn(name="post_id")
-    private List<Project> ownedProjects = new ArrayList<>();
+    //associated project of student, either selected or proposed.
+    @OneToOne(cascade = CascadeType.DETACH,
+            orphanRemoval = true)
+    @JoinColumn(name = "post_id")
+    private List<Project> associatedProject = new ArrayList<>();
     
-    // projects proposed "to" the supervisor.
-    @OneToMany(
-            cascade = CascadeType.DETACH,
-            orphanRemoval = true
-    )
-    @JoinColumn(name="post_id")
-    private List<Project> proposedProjects = new ArrayList<>();
-    
-    public Supervisor() {
+    public Student() {
         
     }
 
-    public Supervisor(String sussexId, String password, String name, String surname, String email, String telephone) {
+    public Student(String sussexId, String password, String name, String surname, String email, String course) {
         this.sussexId = sussexId;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.telephone = telephone;
+        this.course = course;
     }
 
     public String getSussexId() {
@@ -123,40 +115,24 @@ public class Supervisor {
         this.email = email;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getCourse() {
+        return course;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public List<Project> getOwnedProjects() {
-        return ownedProjects;
-    }
-
-    public void setOwnedProjects(List<Project> ownedProjects) {
-        this.ownedProjects = ownedProjects;
-    }
-
-    public List<Project> getProposedProjects() {
-        return proposedProjects;
-    }
-
-    public void setProposedProjects(List<Project> proposedProjects) {
-        this.proposedProjects = proposedProjects;
+    public void setCourse(String course) {
+        this.course = course;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.sussexId);
-        hash = 41 * hash + Objects.hashCode(this.password);
-        hash = 41 * hash + Objects.hashCode(this.name);
-        hash = 41 * hash + Objects.hashCode(this.surname);
-        hash = 41 * hash + Objects.hashCode(this.email);
-        hash = 41 * hash + Objects.hashCode(this.telephone);
+        int hash = 5;
+        hash = 19 * hash + Objects.hashCode(this.id);
+        hash = 19 * hash + Objects.hashCode(this.sussexId);
+        hash = 19 * hash + Objects.hashCode(this.password);
+        hash = 19 * hash + Objects.hashCode(this.name);
+        hash = 19 * hash + Objects.hashCode(this.surname);
+        hash = 19 * hash + Objects.hashCode(this.email);
+        hash = 19 * hash + Objects.hashCode(this.course);
         return hash;
     }
 
@@ -171,7 +147,7 @@ public class Supervisor {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Supervisor other = (Supervisor) obj;
+        final Student other = (Student) obj;
         if (!Objects.equals(this.sussexId, other.sussexId)) {
             return false;
         }
@@ -187,7 +163,7 @@ public class Supervisor {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        if (!Objects.equals(this.telephone, other.telephone)) {
+        if (!Objects.equals(this.course, other.course)) {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
@@ -195,7 +171,6 @@ public class Supervisor {
         }
         return true;
     }
-    
     
     
 }
