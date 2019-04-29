@@ -41,10 +41,13 @@ public class ProjectProposalCreationBean implements Serializable {
     String description;
     String skills;
     
+    String supervisorName;
+    
     @PostConstruct
     public void init() {
         projectTopics = projectTopicService.getProjectTopicList();
-        //selected = projectTopics.get(0).getProjects().ge;
+        selected = projectTopics.get(0).getTopicname();
+        supervisorName = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
     }
     
     public ProjectProposalCreationBean() {
@@ -96,7 +99,7 @@ public class ProjectProposalCreationBean implements Serializable {
         if (selected==null) {
             context.addMessage(null, new FacesMessage("You must select a topic"));
         } else {
-            projectCreationService.createProjectProposal(selected, name, description, skills);
+            projectCreationService.createProjectProposal(supervisorName, selected, name, description, skills);
             context.addMessage(null, new FacesMessage("Project is created."));
         }
     }

@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,7 +28,11 @@ import javax.validation.constraints.Email;
  * @author emrehavan
  */
 
-@NamedQuery(name="getAllSupervisors", query="SELECT c FROM Supervisor c ")
+@NamedQueries({
+    @NamedQuery(name="getAllSupervisors", query="SELECT c FROM Supervisor c "),
+    @NamedQuery(name="findSupervisorWithSussexID", query="SELECT c FROM Supervisor c WHERE c.sussexId LIKE :sussexId"
+)
+})
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"sussexId"})})
@@ -60,19 +65,19 @@ public class Supervisor {
     
     // projects created "by" the supervisor.
     @OneToMany(
-            cascade = CascadeType.DETACH,
+            mappedBy = "supervisor",
+            cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    @JoinColumn(name="post_id")
     private List<Project> ownedProjects = new ArrayList<>();
     
     // projects proposed "to" the supervisor.
-    @OneToMany(
-            cascade = CascadeType.DETACH,
-            orphanRemoval = true
-    )
-    @JoinColumn(name="post_id")
-    private List<Project> proposedProjects = new ArrayList<>();
+    //@OneToMany(
+    //        cascade = CascadeType.DETACH,
+    //        orphanRemoval = true
+    //)
+    //@JoinColumn(name="post_id")
+    //private List<Project> proposedProjects = new ArrayList<>();
     
     public Supervisor() {
         
@@ -85,6 +90,14 @@ public class Supervisor {
         this.surname = surname;
         this.email = email;
         this.telephone = telephone;
+    }
+    
+    public void addProject(Project project) {
+        ownedProjects.add(project);
+    }
+    
+    public void removeProject(Project project) {
+        ownedProjects.remove(project);
     }
 
     public String getSussexId() {
@@ -143,13 +156,13 @@ public class Supervisor {
         this.ownedProjects = ownedProjects;
     }
 
-    public List<Project> getProposedProjects() {
-        return proposedProjects;
-    }
+    //public List<Project> getProposedProjects() {
+    //    return proposedProjects;
+    //}
 
-    public void setProposedProjects(List<Project> proposedProjects) {
-        this.proposedProjects = proposedProjects;
-    }
+    //public void setProposedProjects(List<Project> proposedProjects) {
+    //    this.proposedProjects = proposedProjects;
+    //}
 
     @Override
     public int hashCode() {
@@ -200,6 +213,9 @@ public class Supervisor {
         return true;
     }
     
-    
+    @Override
+    public String toString() {
+        return this.name + " " + this.surname;
+    }
     
 }

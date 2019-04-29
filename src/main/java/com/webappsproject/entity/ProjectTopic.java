@@ -53,7 +53,6 @@ public class ProjectTopic {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    //@JoinColumn(name="post_id")
     private List<Project> projects = new ArrayList<>();
     
     public ProjectTopic() {

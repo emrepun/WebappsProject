@@ -6,6 +6,7 @@
 package com.webappsproject.ejb;
 import com.webappsproject.entity.Project;
 import com.webappsproject.entity.ProjectTopic;
+import com.webappsproject.entity.Supervisor;
 
 import java.util.List;
 import javax.ejb.Singleton;
@@ -41,5 +42,13 @@ public class ProjectListService {
                 setParameter("topicname", topicName).
                 getResultList().get(0);
         return topic.getProjects();
+    }
+    
+    public List<Project> getProjectsForSupervisor(String sussexId) {
+        Supervisor supervisor = (Supervisor)em.createNamedQuery("findSupervisorWithSussexID").
+                setParameter("sussexId", sussexId).
+                getResultList().get(0);
+        System.out.println(supervisor.getSussexId());
+        return supervisor.getOwnedProjects();
     }
 }

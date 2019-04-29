@@ -51,6 +51,10 @@ public class Project {
     @JoinColumn(name="topic_id")
     private ProjectTopic projectTopic;
     
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="supervisor_id")
+    private Supervisor supervisor;
+    
     public enum ProjectStatus {
         ACCEPTED,
         PROPOSED,
@@ -116,6 +120,14 @@ public class Project {
         this.projectTopic = projectTopic;
     }
 
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;
