@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.webappsproject.ejb;
+import com.webappsproject.entity.Project;
 import com.webappsproject.entity.ProjectTopic;
 
 import java.util.List;
@@ -35,4 +36,10 @@ public class ProjectListService {
         this.selectedProjectTopic = selectedProjectTopic;
     }
     
+    public List<Project> getProjectsForProjectTopicName(String topicName) {
+        ProjectTopic topic = (ProjectTopic)em.createNamedQuery("findProjectTopicWithName").
+                setParameter("topicname", topicName).
+                getResultList().get(0);
+        return topic.getProjects();
+    }
 }
