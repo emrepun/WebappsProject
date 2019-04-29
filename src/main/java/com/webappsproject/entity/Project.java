@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -24,6 +26,15 @@ import javax.validation.constraints.NotNull;
  *
  * @author emrehavan
  */
+
+
+
+@NamedQueries({
+    @NamedQuery(name="getAllProjects", query="SELECT c FROM Project c "),
+    @NamedQuery(name="findAvailableProjects", query="SELECT c FROM Project c WHERE c.status = :status"
+)
+})
+
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"title"})})
 public class Project {
@@ -167,6 +178,11 @@ public class Project {
             return false;
         }
         return true;
+    }
+    
+    @Override
+    public String toString() {
+        return this.title;
     }
 }
 

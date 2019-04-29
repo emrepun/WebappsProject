@@ -40,8 +40,6 @@ public class AdminHomeBean implements Serializable {
     @EJB
     ProjectTopicService projectTopicService;
     
-    private String ne;
-    
     public AdminHomeBean() {
         
     }

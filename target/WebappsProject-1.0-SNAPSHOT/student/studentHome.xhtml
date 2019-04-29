@@ -8,7 +8,12 @@
     <h:body>
         Welcome to Student Homepage
         <br/>
+        What would you like to do today?
+        <br/>
+        <br/>
         <h:form>
+            <h:commandButton value="Display Projects" action="studentProjectList"/>
+            <br/>
             <h:commandButton value="Logout" action="#{initialBean.logout()}"/>
         </h:form>
     </h:body>

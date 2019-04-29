@@ -1,6 +1,5 @@
 com/webappsproject/ejb/ProjectListService.class
 com/webappsproject/entity/Supervisor.class
-com/webappsproject/jsf/SupervisorHomeBean.class
 com/webappsproject/entity/SystemUser_.class
 com/webappsproject/jsf/ProjectTopicDisplayBean.class
 com/webappsproject/jsf/StudentRegistrationBean.class
@@ -19,13 +18,13 @@ com/webappsproject/entity/ProjectTopic.class
 com/webappsproject/entity/Project$ProjectStatus.class
 com/webappsproject/ejb/AdminService.class
 com/webappsproject/ejb/ProjectCreationService.class
+com/webappsproject/jsf/StudentProjectListBean.class
+com/webappsproject/ejb/ProjectProposalService.class
 com/webappsproject/jsf/InitialBean.class
 com/webappsproject/entity/SystemUser.class
 com/webappsproject/ejb/ProjectTopicService.class
 com/webappsproject/jsf/ProjectTopicCreationBean.class
 com/webappsproject/jsf/ProjectProposalCreationBean.class
-com/webappsproject/jsf/SupervisorLoginBean.class
-com/webappsproject/jsf/StudentLoginBean.class
 com/webappsproject/entity/Project_.class
 com/webappsproject/entity/Supervisor_.class
 com/webappsproject/entity/Student_.class

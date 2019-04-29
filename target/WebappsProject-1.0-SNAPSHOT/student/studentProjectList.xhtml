@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Projects:
+        <br/>
+        <h:form>
+            <h:dataTable value="#{studentProjectListBean.projects}" var="project">
+            <h:column>    				
+                <f:facet name="header">Name</f:facet>    				
+                    #{project.title}
+            </h:column>
+            <h:column>    				
+                <f:facet name="header">Description</f:facet>    				
+                    #{project.description}
+            </h:column>
+            <h:column>    				
+                <f:facet name="header">Required Skills</f:facet>    				
+                    #{project.requiredSkills}
+            </h:column>    
+            <h:column>    				
+                <f:facet name="header">Supervisor</f:facet>    				
+                    #{project.supervisor}
+            </h:column>
+            <h:column>    				
+                <f:facet name="header">Topic</f:facet>    				
+                    #{project.projectTopic.topicname}
+            </h:column>    
+            <h:column>    				
+                <f:facet name="header">Status</f:facet>    				
+                    #{project.status}
+            </h:column>    
+            </h:dataTable>
+            <br/>
+            Select a project to apply.
+            <h:form>
+                <h:selectOneMenu value ="#{studentProjectListBean.selected}">
+                    <f:selectItems value="#{studentProjectListBean.availableProjects}" var="project" itemValue="#{project.name}"/>
+                    <f:ajax execute="@this" render="projectList"/>
+             </h:selectOneMenu>
+            </h:form>
+            <h:form>
+                <h:commandButton value = "Show Proposals" action = "projectList" /> 
+            </h:form>
+            </h:form>
+    </h:body>
+</html>
+
