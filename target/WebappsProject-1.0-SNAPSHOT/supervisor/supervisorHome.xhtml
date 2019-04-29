@@ -17,12 +17,16 @@
             <br/>
             <h:commandButton id="createProposal" type="submit" value="Create a Project Proposal" action="supervisorProjectProposalCreation" title="Create a Project Proposal"/>
             <br/>
-            <h:commandButton id="displayProjectTopics" type="submit" value="Display Project Topics" action="supervisorProjectTopicList" title="Display Project Topics"/>
+            
         </h:form>
         <br/>
-        Access reports:
+        Access Projects:
         <h:form>
+            <h:commandButton id="displayProjectTopics" type="submit" value="Display Project Topics" action="supervisorProjectTopicList" title="Display Project Topics"/>
+            <br/>
             <h:commandButton id="displayOwnedProjects" type="submit" value="Display Owned Projects" action="supervisorOwnedProjectList" title="Display Owned Projects"/>
+            <br/>
+            <h:commandButton value="Logout" action="#{initialBean.logout()}"/>
         </h:form>
         
     </h:body>

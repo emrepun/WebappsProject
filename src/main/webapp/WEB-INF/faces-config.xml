@@ -34,6 +34,14 @@
     </navigation-rule>
     
     <navigation-rule>
+        <from-view-id>/supervisor/supervisorHome.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
         <from-view-id>/admin/adminHome.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>index</from-outcome>
