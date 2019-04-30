@@ -7,6 +7,7 @@ package com.webappsproject.jsf;
 
 import com.webappsproject.ejb.ProjectApplicationReviewService;
 import com.webappsproject.entity.Project;
+import com.webappsproject.entity.Student;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -35,6 +36,14 @@ public class SupervisorApplicationListBean implements Serializable {
     public void init() {
         String supervisorID = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
         applications = applicationService.getApplicationsForSupervisor(supervisorID);
+        if (!applications.isEmpty()) {
+            System.out.println("this run 1");
+            selected = applications.get(0).getName();
+            applicationService.setSelectedProjectApplication(selected);
+        } else {
+            System.out.println("this run 2");
+            selected = "";
+        }
     }
     
     public SupervisorApplicationListBean() {
@@ -54,17 +63,29 @@ public class SupervisorApplicationListBean implements Serializable {
     }
 
     public void setSelected(String selected) {
+        System.out.println("this run 3");
         this.selected = selected;
         applicationService.setSelectedProjectApplication(selected);
     }
     
     public void accept() {
         System.out.println("accepted");
-        //Implementation pending
+        applicationService.acceptApplication();
     }
     
     public void reject() {
         System.out.println("rejected");
-        //Implementation pending
+        applicationService.setStudent(getStudent());
+        applicationService.rejectApplication();
+    }
+    
+    public String getStudent() {
+        for (Project p: applications) {
+            if (p.getName().equals(selected)) {
+                return p.getStudent().getSussexId();
+            }
+        }
+        
+        return null;
     }
 }

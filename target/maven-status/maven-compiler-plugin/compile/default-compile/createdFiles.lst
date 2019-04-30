@@ -21,6 +21,8 @@ com/webappsproject/ejb/ProjectCreationService.class
 com/webappsproject/jsf/StudentProjectListBean.class
 com/webappsproject/ejb/ProjectProposalService.class
 com/webappsproject/jsf/InitialBean.class
+com/webappsproject/ejb/ProjectApplicationReviewService.class
+com/webappsproject/jsf/SupervisorApplicationListBean.class
 com/webappsproject/entity/SystemUser.class
 com/webappsproject/ejb/ProjectTopicService.class
 com/webappsproject/jsf/ProjectTopicCreationBean.class

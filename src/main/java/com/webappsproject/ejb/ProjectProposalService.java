@@ -54,6 +54,7 @@ public class ProjectProposalService {
         String studentName = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
         
         //get project with selectedProject name
+        
         Project project = (Project)em.createNamedQuery("findProjectWithName").
                 setParameter("title", selectedProject).
                 getResultList().get(0);
@@ -62,7 +63,6 @@ public class ProjectProposalService {
         Student student = (Student)em.createNamedQuery("findStudentWithSussexId").
                 setParameter("sussexId", studentName).
                 getResultList().get(0);
-        
         
         if (student.getAssociatedProject() == null) {
             project.setStatus(Project.ProjectStatus.PROPOSED);
@@ -79,6 +79,7 @@ public class ProjectProposalService {
             return -1;
         }
         
+        System.out.println(student.getAssociatedProject().getTitle());
         return -2;
     }
 }
