@@ -13,6 +13,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -30,10 +32,18 @@ public class StudentProjectListBean implements Serializable {
     @EJB
     ProjectProposalService proposalService;
     
+    FacesContext context = FacesContext.getCurrentInstance();
+    
     @PostConstruct
     public void init() {
         projects = proposalService.getAllProjectsForStudents();
         availableProjects = proposalService.getAllAvailableProjectsForStudents();
+        if (availableProjects.isEmpty()) {
+            context.addMessage(null, new FacesMessage("There are no available projects"));
+            selected = "";
+        } else {
+            selected = availableProjects.get(0).getName();
+        }
     }
     
     public StudentProjectListBean() {
@@ -46,6 +56,7 @@ public class StudentProjectListBean implements Serializable {
 
     public void setSelected(String selected) {
         this.selected = selected;
+        proposalService.setSelectedProject(selected);
         System.out.println("Selected project: " + this.selected);
     }
 
@@ -65,5 +76,22 @@ public class StudentProjectListBean implements Serializable {
         this.availableProjects = availableProjects;
     }
     
-    
+    public void applyForProject() {
+        System.out.println("applied for project");
+        
+        int result = proposalService.applyForProjectWithName();
+        switch (result) {
+            case -1:
+                context.addMessage(null, new FacesMessage("You already have a project."));
+                break;
+            case 0:
+                context.addMessage(null, new FacesMessage("You already proposed to a project"));
+                break;
+            case 1:
+                context.addMessage(null, new FacesMessage("Application Completed."));
+                break;
+            default:
+                context.addMessage(null, new FacesMessage("An error occurred"));              
+        }
+    }
 }

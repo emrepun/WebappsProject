@@ -33,6 +33,7 @@ public class ProjectCreationService {
        Project proj = new Project(projectName, projectDesc, projectSkills);
        proj.setProjectTopic(topic);
        proj.setSupervisor(supervisor);
+       proj.setStudent(null);
        topic.addProject(proj);
        supervisor.addProject(proj);
        

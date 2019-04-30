@@ -48,8 +48,6 @@ public class ProjectListDisplayBean {
     }
 
     public List<Project> getProjects() {
-        System.out.println("this ran.");
-        System.out.println(projects.size());
         return projects;
     }
 

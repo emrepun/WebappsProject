@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -20,8 +21,12 @@ import javax.validation.constraints.NotNull;
  *
  * @author emrehavan
  */
+@NamedQueries({
+    @NamedQuery(name="getAllAdmins", query="SELECT c FROM Admin c "),
+    @NamedQuery(name="findAdminWithUsername", query="SELECT c FROM Admin c WHERE c.username LIKE :username"
+)
+})
 
-@NamedQuery(name="getAllAdmins", query="SELECT c FROM Admin c ")
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"username"})})

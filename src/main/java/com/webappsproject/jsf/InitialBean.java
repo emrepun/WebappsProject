@@ -36,7 +36,9 @@ public class InitialBean implements Serializable {
     @PostConstruct
     public void initial() {
         System.out.println("created");
-        adminService.registerAdmin("admin1", "admin1");
+        if (adminService.getAdminWithUsername("admin1") == null) {
+            adminService.registerAdmin("admin1", "admin1");
+        }
     }
 
     public String loginSelected() {

@@ -6,10 +6,12 @@
 package com.webappsproject.ejb;
 import com.webappsproject.entity.Project;
 import com.webappsproject.entity.ProjectTopic;
+import com.webappsproject.entity.Student;
 import com.webappsproject.entity.Supervisor;
 
 import java.util.List;
 import javax.ejb.Singleton;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -42,9 +44,41 @@ public class ProjectProposalService {
     }
     
     public synchronized List<Project> getAllAvailableProjectsForStudents() {
-        System.out.println("ne");
         return em.createNamedQuery("findAvailableProjects").
                 setParameter("status", Project.ProjectStatus.AVAILABLE).
                 getResultList();
+    }
+    
+    public synchronized int applyForProjectWithName() {
+        //get current logged-in student.
+        String studentName = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+        
+        //get project with selectedProject name
+        Project project = (Project)em.createNamedQuery("findProjectWithName").
+                setParameter("title", selectedProject).
+                getResultList().get(0);
+        
+        //get student
+        Student student = (Student)em.createNamedQuery("findStudentWithSussexId").
+                setParameter("sussexId", studentName).
+                getResultList().get(0);
+        
+        
+        if (student.getAssociatedProject() == null) {
+            project.setStatus(Project.ProjectStatus.PROPOSED);
+            project.setStudent(student);
+        
+            student.setAssociatedProject(project);
+        
+            em.persist(project);
+            em.persist(student);
+            return 1;
+        } else if (student.getAssociatedProject().getStatus() == Project.ProjectStatus.PROPOSED) {
+            return 0;
+        } else if (student.getAssociatedProject().getStatus() == Project.ProjectStatus.ACCEPTED) {
+            return -1;
+        }
+        
+        return -2;
     }
 }

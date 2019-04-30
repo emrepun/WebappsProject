@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -28,11 +29,10 @@ import javax.validation.constraints.NotNull;
  */
 
 
-
 @NamedQueries({
     @NamedQuery(name="getAllProjects", query="SELECT c FROM Project c "),
-    @NamedQuery(name="findAvailableProjects", query="SELECT c FROM Project c WHERE c.status = :status"
-)
+    @NamedQuery(name="findAvailableProjects", query="SELECT c FROM Project c WHERE c.status = :status"),
+    @NamedQuery(name="findProjectWithName", query="SELECT c FROM Project c WHERE c.title LIKE :title")
 })
 
 @Entity
@@ -66,6 +66,10 @@ public class Project {
     @JoinColumn(name="supervisor_id")
     private Supervisor supervisor;
     
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="student_id")
+    private Student student;
+    
     public enum ProjectStatus {
         ACCEPTED,
         PROPOSED,
@@ -81,6 +85,7 @@ public class Project {
         this.description = description;
         this.requiredSkills = requiredSkills;
         this.status = ProjectStatus.AVAILABLE;
+        
     }
 
     public String getName() {
@@ -137,6 +142,14 @@ public class Project {
 
     public void setSupervisor(Supervisor supervisor) {
         this.supervisor = supervisor;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
     
     @Override

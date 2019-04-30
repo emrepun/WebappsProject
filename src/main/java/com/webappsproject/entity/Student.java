@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -29,7 +30,12 @@ import javax.validation.constraints.Email;
  * @author emrehavan
  */
 
-@NamedQuery(name="getAllStudents", query="SELECT c FROM Student c ")
+@NamedQueries({
+    @NamedQuery(name="getAllStudents", query="SELECT c FROM Student c "),
+    @NamedQuery(name="findStudentWithSussexId", query="SELECT c FROM Student c WHERE c.sussexId LIKE :sussexId")
+})
+
+
 
 @Entity
 @Table(uniqueConstraints={@UniqueConstraint(columnNames={"sussexId"})})
@@ -61,10 +67,8 @@ public class Student {
     private String course;
     
     //associated project of student, either selected or proposed.
-    @OneToOne(cascade = CascadeType.DETACH,
-            orphanRemoval = true)
-    @JoinColumn(name = "post_id")
-    private List<Project> associatedProject = new ArrayList<>();
+    @OneToOne(mappedBy = "student")
+    private Project associatedProject;
     
     public Student() {
         
@@ -77,6 +81,7 @@ public class Student {
         this.surname = surname;
         this.email = email;
         this.course = course;
+        this.associatedProject = null;
     }
 
     public String getSussexId() {
@@ -127,6 +132,14 @@ public class Student {
         this.course = course;
     }
 
+    public Project getAssociatedProject() {
+        return associatedProject;
+    }
+
+    public void setAssociatedProject(Project associatedProject) {
+        this.associatedProject = associatedProject;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 5;

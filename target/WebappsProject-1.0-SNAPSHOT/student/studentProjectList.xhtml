@@ -38,15 +38,15 @@
             </h:dataTable>
             <br/>
             Select a project to apply.
+            <h:commandButton id="applyProject" type="submit" value="Apply" action="#{studentProjectListBean.applyForProject}" title="Apply Project" immediate="true"/>
             <h:form>
-                <h:selectOneMenu value ="#{studentProjectListBean.selected}">
-                    <f:selectItems value="#{studentProjectListBean.availableProjects}" var="project" itemValue="#{project.name}"/>
-                    <f:ajax execute="@this" render="projectList"/>
-             </h:selectOneMenu>
+            <h:selectOneMenu value ="#{studentProjectListBean.selected}">
+                <f:selectItems value="#{studentProjectListBean.availableProjects}" var="project" itemValue="#{project.name}"/>
+                <f:ajax execute="@this" render="projectList"/>
+            </h:selectOneMenu>
             </h:form>
-            <h:form>
-                <h:commandButton value = "Show Proposals" action = "projectList" /> 
-            </h:form>
+            Apply:
+            
             </h:form>
     </h:body>
 </html>
