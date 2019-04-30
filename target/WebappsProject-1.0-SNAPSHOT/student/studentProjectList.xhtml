@@ -36,17 +36,17 @@
                     #{project.status}
             </h:column>    
             </h:dataTable>
+            </h:form>
             <br/>
             Select a project to apply.
-            <h:commandButton id="applyProject" type="submit" value="Apply" action="#{studentProjectListBean.applyForProject}" title="Apply Project" immediate="true"/>
             <h:form>
             <h:selectOneMenu value ="#{studentProjectListBean.selected}">
                 <f:selectItems value="#{studentProjectListBean.availableProjects}" var="project" itemValue="#{project.name}"/>
                 <f:ajax execute="@this" render="projectList"/>
             </h:selectOneMenu>
-            </h:form>
-            Apply:
-            
+            <br/>
+            <br/>
+            <h:commandButton id="applyProject" type="submit" value="Apply" action="#{studentProjectListBean.applyForProject}" title="Apply Project" immediate="true"/>
             </h:form>
     </h:body>
 </html>

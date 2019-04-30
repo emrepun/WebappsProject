@@ -85,7 +85,7 @@ public class StudentProjectListBean implements Serializable {
                 context.addMessage(null, new FacesMessage("You already have a project."));
                 break;
             case 0:
-                context.addMessage(null, new FacesMessage("You already proposed to a project"));
+                context.addMessage(null, new FacesMessage("You already applied to a project"));
                 break;
             case 1:
                 context.addMessage(null, new FacesMessage("Application Completed."));
