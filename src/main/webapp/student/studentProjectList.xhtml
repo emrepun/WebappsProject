@@ -38,7 +38,7 @@
             </h:dataTable>
             </h:form>
             <br/>
-            Select a project to apply.
+            Select an available project to apply.
             <h:form>
             <h:selectOneMenu value ="#{studentProjectListBean.selected}">
                 <f:selectItems value="#{studentProjectListBean.availableProjects}" var="project" itemValue="#{project.name}"/>
@@ -47,6 +47,8 @@
             <br/>
             <br/>
             <h:commandButton id="applyProject" type="submit" value="Apply" action="#{studentProjectListBean.applyForProject}" title="Apply Project" immediate="true"/>
+            <br/>
+            <h:button id="studentApplicationBackButton" title="Go Back" value="Go Back" outcome="studentHome"/>
             </h:form>
     </h:body>
 </html>

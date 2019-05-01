@@ -13,6 +13,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -68,15 +69,18 @@ public class SupervisorApplicationListBean implements Serializable {
         applicationService.setSelectedProjectApplication(selected);
     }
     
-    public void accept() {
+    public String accept() {
         System.out.println("accepted");
         applicationService.acceptApplication();
+        context.addMessage(null, new FacesMessage("Application accepted."));
+        return "supervisorHome";
     }
     
-    public void reject() {
+    public String reject() {
         System.out.println("rejected");
         applicationService.setStudent(getStudent());
         applicationService.rejectApplication();
+        return "supervisorHome";
     }
     
     public String getStudent() {

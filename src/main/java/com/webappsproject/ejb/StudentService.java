@@ -11,6 +11,7 @@ import java.security.MessageDigest;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -70,6 +71,12 @@ public class StudentService {
     
     public synchronized List<Student> getStudentList() {
         return em.createNamedQuery("getAllStudents").getResultList();
+    }
+    
+    public synchronized Student getLoggedInStudent() {
+        String sussexId = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+        return (Student)em.createNamedQuery("findStudentWithSussexId").setParameter("sussexId", sussexId)
+                .getResultList().get(0);
     }
     
 }

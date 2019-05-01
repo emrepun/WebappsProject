@@ -43,6 +43,7 @@ public class StudentProjectListBean implements Serializable {
             selected = "";
         } else {
             selected = availableProjects.get(0).getName();
+            proposalService.setSelectedProject(selected);
         }
     }
     

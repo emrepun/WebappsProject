@@ -51,25 +51,22 @@ public class ProjectProposalService {
     
     public synchronized int applyForProjectWithName() {
         //get current logged-in student.
-        String studentName = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
         
+        String studentName = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
         //get project with selectedProject name
         
         Project project = (Project)em.createNamedQuery("findProjectWithName").
                 setParameter("title", selectedProject).
                 getResultList().get(0);
-        
         //get student
         Student student = (Student)em.createNamedQuery("findStudentWithSussexId").
                 setParameter("sussexId", studentName).
                 getResultList().get(0);
-        
         if (student.getAssociatedProject() == null) {
             project.setStatus(Project.ProjectStatus.PROPOSED);
             project.setStudent(student);
         
             student.setAssociatedProject(project);
-        
             em.persist(project);
             em.persist(student);
             return 1;

@@ -15,20 +15,28 @@
                     #{student.sussexId}
             </h:column>
             <h:column>    				
-                <f:facet name="header">name</f:facet>    				
+                <f:facet name="header">Name</f:facet>    				
                     #{student.name}
             </h:column>
             <h:column>    				
-                <f:facet name="header">surname</f:facet>    				
+                <f:facet name="header">Surname</f:facet>    				
                     #{student.surname}
             </h:column>
             <h:column>    				
-                <f:facet name="header">email</f:facet>    				
+                <f:facet name="header">Email</f:facet>    				
                     #{student.email}
             </h:column>
             <h:column>    				
-                <f:facet name="header">course</f:facet>    				
+                <f:facet name="header">Course</f:facet>    				
                     #{student.course}
+            </h:column>
+            <h:column>    				
+                <f:facet name="header">Project</f:facet>    				
+                    #{student.associatedProject}
+            </h:column>
+            <h:column>    				
+                <f:facet name="header">Status</f:facet>    				
+                    #{student.associatedProject.status}
             </h:column>
         </h:dataTable>
         <br/>
