@@ -68,9 +68,11 @@ public class SupervisorStudentProposedApplicationListBean {
     
     public void accept() {
         applicationService.acceptStudentProposal(selected);
+        context.addMessage(null, new FacesMessage("Student proposal has been approved."));
     }
     
     public void reject() {
         applicationService.rejectStudentProposal(selected);
+        context.addMessage(null, new FacesMessage("Student proposal has been rejected."));
     }
 }

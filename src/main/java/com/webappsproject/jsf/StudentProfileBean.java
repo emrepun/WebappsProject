@@ -22,7 +22,7 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class StudentProfileBean implements Serializable  {
+public class StudentProfileBean implements Serializable {
     
     private Student student;
     

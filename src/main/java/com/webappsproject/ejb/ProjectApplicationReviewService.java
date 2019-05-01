@@ -6,6 +6,7 @@
 package com.webappsproject.ejb;
 
 import com.webappsproject.entity.Project;
+import com.webappsproject.entity.ProjectTopic;
 import com.webappsproject.entity.Supervisor;
 import com.webappsproject.entity.Student;
 import java.util.ArrayList;
@@ -138,22 +139,26 @@ public class ProjectApplicationReviewService {
                 getResultList().get(0);
         
         if (project != null && project.getStatus() == Project.ProjectStatus.PROPOSED) {
-            //get associated supervisor and student from project.
+            //get associated topic, supervisor and student from project.
             Supervisor supervisor = project.getSupervisorOptional();
             Student student = project.getStudent();
+            ProjectTopic topic = project.getProjectTopic();
             
-            //dissociate supervisor and student from project.
+            //dissociate topic, supervisor and student from project.
             project.setSupervisorOptional(null);
             project.setStudent(null);
+            project.setProjectTopic(null);
             
             //dissociate project from student and supervisor.
             supervisor.removeProposedProject(project);
             student.setAssociatedProject(null);
+            topic.removeProject(project);
             
             //persist changes for all objects.
             em.persist(project);
             em.persist(supervisor);
             em.persist(student);
+            em.persist(topic);
             
             //finally delete the project from DB.
             em.remove(project);

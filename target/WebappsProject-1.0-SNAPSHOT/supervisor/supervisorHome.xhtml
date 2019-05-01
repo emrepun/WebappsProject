@@ -11,13 +11,14 @@
         What would you like to do today?
         <br/>
         <br/>
-        Create a new project topic:
+        Create a new project topic:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h:outputText value="Notifications: " style="font-weight:bold"/>
+        <h:outputText value="#{supervisorHomeBean.notification}"/>
         <h:form>
             <h:commandButton id="createProjectTopic" type="submit" value="Create Project Topic" action="supervisorProjectTopicCreation" title="Create a Project Topic"/>
             <br/>
             <h:commandButton id="createProposal" type="submit" value="Create a Project Proposal" action="supervisorProjectProposalCreation" title="Create a Project Proposal"/>
             <br/>
-            
         </h:form>
         <br/>
         Applications:
@@ -38,7 +39,6 @@
             <br/>
             <h:commandButton value="Logout" action="#{initialBean.logout()}"/>
         </h:form>
-        
     </h:body>
 </html>
 
