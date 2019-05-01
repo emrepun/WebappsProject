@@ -8,7 +8,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-30T23:48:03")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-05-01T17:27:53")
 @StaticMetamodel(Project.class)
 public class Project_ { 
 
@@ -18,6 +18,7 @@ public class Project_ {
     public static volatile SingularAttribute<Project, String> requiredSkills;
     public static volatile SingularAttribute<Project, Long> id;
     public static volatile SingularAttribute<Project, String> title;
+    public static volatile SingularAttribute<Project, Supervisor> supervisorOptional;
     public static volatile SingularAttribute<Project, Supervisor> supervisor;
     public static volatile SingularAttribute<Project, ProjectStatus> status;
 

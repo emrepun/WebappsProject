@@ -72,6 +72,12 @@ public class Supervisor {
     private List<Project> ownedProjects = new ArrayList<>();
     
     // projects proposed "to" the supervisor.
+    @OneToMany(
+            mappedBy = "supervisorOptional",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Project> proposedProjects = new ArrayList<>();
     //@OneToMany(
     //        cascade = CascadeType.DETACH,
     //        orphanRemoval = true
@@ -98,6 +104,14 @@ public class Supervisor {
     
     public void removeProject(Project project) {
         ownedProjects.remove(project);
+    }
+    
+    public void addProposedProject(Project project) {
+        proposedProjects.add(project);
+    }
+    
+    public void removeProposedProject(Project project) {
+        proposedProjects.remove(project);
     }
 
     public String getSussexId() {
@@ -156,13 +170,13 @@ public class Supervisor {
         this.ownedProjects = ownedProjects;
     }
 
-    //public List<Project> getProposedProjects() {
-    //    return proposedProjects;
-    //}
+    public List<Project> getProposedProjects() {
+        return proposedProjects;
+    }
 
-    //public void setProposedProjects(List<Project> proposedProjects) {
-    //    this.proposedProjects = proposedProjects;
-    //}
+    public void setProposedProjects(List<Project> proposedProjects) {
+        this.proposedProjects = proposedProjects;
+    }
 
     @Override
     public int hashCode() {

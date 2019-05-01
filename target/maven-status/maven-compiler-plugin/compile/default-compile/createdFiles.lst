@@ -9,6 +9,7 @@ com/webappsproject/jsf/ProjectListDisplayBean.class
 com/webappsproject/ejb/SupervisorService.class
 com/webappsproject/entity/SystemUserGroup.class
 com/webappsproject/entity/Admin.class
+com/webappsproject/jsf/StudentProjectCreationBean.class
 com/webappsproject/jsf/AdminHomeBean.class
 com/webappsproject/jsf/SupervisorOwnedProjectBean.class
 com/webappsproject/entity/SystemUserGroup_.class
@@ -16,6 +17,7 @@ com/webappsproject/jsf/SupervisorRegistrationBean.class
 com/webappsproject/entity/ProjectTopic_.class
 com/webappsproject/entity/ProjectTopic.class
 com/webappsproject/entity/Project$ProjectStatus.class
+com/webappsproject/jsf/SupervisorStudentProposedApplicationListBean.class
 com/webappsproject/ejb/AdminService.class
 com/webappsproject/ejb/ProjectCreationService.class
 com/webappsproject/jsf/StudentProjectListBean.class
@@ -27,6 +29,7 @@ com/webappsproject/entity/SystemUser.class
 com/webappsproject/ejb/ProjectTopicService.class
 com/webappsproject/jsf/ProjectTopicCreationBean.class
 com/webappsproject/jsf/ProjectProposalCreationBean.class
+com/webappsproject/jsf/StudentProfileBean.class
 com/webappsproject/entity/Project_.class
 com/webappsproject/entity/Supervisor_.class
 com/webappsproject/entity/Student_.class

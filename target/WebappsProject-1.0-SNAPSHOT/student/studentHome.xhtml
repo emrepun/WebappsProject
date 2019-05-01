@@ -17,10 +17,18 @@
             <h:commandButton value="Profile" action="studentProfile"/>
         </h:form>
         <br/>
-        Projects
+        Projects:
         <br/>
+        <br/>
+        
         <h:form>
+            Select an available project proposed by supervisors:
+            <br/>
             <h:commandButton value="Display Projects" action="studentProjectList"/>
+            <br/>
+            Propose your own project:
+            <br/>
+            <h:commandButton value="Propose" action="studentProjectCreation"/>
             <br/>
             <br/>
             <h:commandButton value="Logout" action="#{initialBean.logout()}"/>

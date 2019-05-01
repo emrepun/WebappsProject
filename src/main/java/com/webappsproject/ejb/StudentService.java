@@ -75,6 +75,7 @@ public class StudentService {
     
     public synchronized Student getLoggedInStudent() {
         String sussexId = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+        System.out.println(sussexId);
         return (Student)em.createNamedQuery("findStudentWithSussexId").setParameter("sussexId", sussexId)
                 .getResultList().get(0);
     }

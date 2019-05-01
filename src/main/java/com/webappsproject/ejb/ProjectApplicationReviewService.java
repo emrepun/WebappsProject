@@ -48,6 +48,8 @@ public class ProjectApplicationReviewService {
         this.studentId = studentId;
     }
     
+    
+    //Get applications made to projects created by a supervisor.
     public synchronized List<Project> getApplicationsForSupervisor(String sussexId) {
         Supervisor supervisor = (Supervisor)em.createNamedQuery("findSupervisorWithSussexID").
                 setParameter("sussexId", sussexId).
@@ -62,6 +64,17 @@ public class ProjectApplicationReviewService {
         
         return appliedProjects;
     }
+    
+    //Get applications made by a student to a supervisor.
+    public synchronized List<Project> getStudentProposedApplicationsForSupervisor(String sussexId) {
+        Supervisor supervisor = (Supervisor)em.createNamedQuery("findSupervisorWithSussexID").
+                setParameter("sussexId", sussexId).
+                getResultList().get(0);
+        List<Project> proposals = supervisor.getProposedProjects();
+        return proposals;
+    }
+    
+    // Accept and Reject applications that created by supervisor.
     
     public void acceptApplication() {
         Project project = (Project)em.createNamedQuery("findProjectWithName").
@@ -91,6 +104,59 @@ public class ProjectApplicationReviewService {
                 student.setAssociatedProject(null);
                 em.persist(student);
             } 
+        }
+    }
+    
+    // Accept and reject applications proposed by a student
+    public void acceptStudentProposal(String projectName) {
+        Project project = (Project)em.createNamedQuery("findProjectWithName").
+                setParameter("title", projectName).
+                getResultList().get(0);
+        
+        if (project != null && project.getStatus() == Project.ProjectStatus.PROPOSED) {
+            Supervisor supervisor = project.getSupervisorOptional();
+            
+            project.setStatus(Project.ProjectStatus.ACCEPTED);
+            
+            //remove supervisor from optional and add to actual supervisor.
+            project.setSupervisorOptional(null);
+            project.setSupervisor(supervisor);
+            
+            //remove project from proposed and add to actual projects.
+            supervisor.removeProposedProject(project);
+            supervisor.addProject(project);
+            
+            //persist objects to DB.
+            em.persist(project);
+            em.persist(supervisor);
+        }
+    }
+    
+    public void rejectStudentProposal(String projectName) {
+        Project project = (Project)em.createNamedQuery("findProjectWithName").
+                setParameter("title", projectName).
+                getResultList().get(0);
+        
+        if (project != null && project.getStatus() == Project.ProjectStatus.PROPOSED) {
+            //get associated supervisor and student from project.
+            Supervisor supervisor = project.getSupervisorOptional();
+            Student student = project.getStudent();
+            
+            //dissociate supervisor and student from project.
+            project.setSupervisorOptional(null);
+            project.setStudent(null);
+            
+            //dissociate project from student and supervisor.
+            supervisor.removeProposedProject(project);
+            student.setAssociatedProject(null);
+            
+            //persist changes for all objects.
+            em.persist(project);
+            em.persist(supervisor);
+            em.persist(student);
+            
+            //finally delete the project from DB.
+            em.remove(project);
         }
     }
 }

@@ -52,6 +52,7 @@ public class ProjectProposalService {
     public synchronized int applyForProjectWithName() {
         //get current logged-in student.
         String studentName = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+        System.out.println(studentName);
         //get project with selectedProject name
         
         Project project = (Project)em.createNamedQuery("findProjectWithName").

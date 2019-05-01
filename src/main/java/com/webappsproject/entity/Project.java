@@ -67,6 +67,11 @@ public class Project {
     @JoinColumn(name="supervisor_id")
     private Supervisor supervisor;
     
+    // this is set when a student makes a proposal by creating a project.
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="supervisorOptional_id")
+    private Supervisor supervisorOptional;
+    
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="student_id")
     private Student student;
@@ -151,6 +156,14 @@ public class Project {
 
     public void setStudent(Student student) {
         this.student = student;
+    }
+
+    public Supervisor getSupervisorOptional() {
+        return supervisorOptional;
+    }
+
+    public void setSupervisorOptional(Supervisor supervisorOptional) {
+        this.supervisorOptional = supervisorOptional;
     }
     
     @Override
