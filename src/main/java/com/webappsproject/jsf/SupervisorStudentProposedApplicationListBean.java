@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -41,6 +42,7 @@ public class SupervisorStudentProposedApplicationListBean {
         } else {
             System.out.println("this run 2");
             selected = "";
+            context.addMessage(null, new FacesMessage("There are no student project proposals."));
         }
     }
     

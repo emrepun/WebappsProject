@@ -12,6 +12,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -34,13 +35,15 @@ public class SupervisorOwnedProjectBean implements Serializable {
     @PostConstruct
     public void init() {
         //get supervisor id from current logged-in user.
-        System.out.println("we are here");
         supervisorID = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-        System.out.println(supervisorID);
         
         //get owned projects with supervisor sussex-id.
         ownedProjects = projectListService.getProjectsForSupervisor(supervisorID);
         System.out.println(ownedProjects.size());
+        
+        if (ownedProjects.isEmpty()) {
+            context.addMessage(null, new FacesMessage("You don't have any projects."));
+        }
     }
     
     public SupervisorOwnedProjectBean() {

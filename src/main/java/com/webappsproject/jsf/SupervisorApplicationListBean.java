@@ -43,6 +43,7 @@ public class SupervisorApplicationListBean implements Serializable {
             applicationService.setSelectedProjectApplication(selected);
         } else {
             System.out.println("this run 2");
+            context.addMessage(null, new FacesMessage("There are no applications."));
             selected = "";
         }
     }
