@@ -3,9 +3,11 @@
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/entity/Admin.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/SupervisorRegistrationBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/StudentRegistrationBean.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/rest/RestServiceStudent.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/SupervisorStudentProposedApplicationListBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/ejb/LogoutService.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/StudentProjectCreationBean.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/rest/RestServiceSupervisor.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/StudentHomeBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/rest/ApplicationConfig.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/entity/SystemUserGroup.java
@@ -29,6 +31,8 @@
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/entity/SystemUser.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/StudentProfileBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/ejb/SupervisorService.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/rest/entities/StudentREST.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/rest/entities/SupervisorREST.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/ProjectTopicCreationBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/entity/Student.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/ejb/ProjectTopicService.java
