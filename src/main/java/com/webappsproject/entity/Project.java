@@ -6,14 +6,12 @@
 package com.webappsproject.entity;
 
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -33,7 +31,8 @@ import javax.validation.constraints.NotNull;
 @NamedQueries({
     @NamedQuery(name="getAllProjects", query="SELECT c FROM Project c "),
     @NamedQuery(name="findAvailableProjects", query="SELECT c FROM Project c WHERE c.status = :status"),
-    @NamedQuery(name="findProjectWithName", query="SELECT c FROM Project c WHERE c.title LIKE :title")
+    @NamedQuery(name="findProjectWithName", query="SELECT c FROM Project c WHERE c.title LIKE :title"),
+    @NamedQuery(name="findProjectsWithSupervisorId", query="SELECT c FROM Project c WHERE c.supervisor.sussexId LIKE :sussexId")
 })
 
 @Entity
@@ -149,7 +148,7 @@ public class Project {
     public void setSupervisor(Supervisor supervisor) {
         this.supervisor = supervisor;
     }
-
+ 
     public Student getStudent() {
         return student;
     }
