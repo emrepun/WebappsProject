@@ -20,6 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
@@ -44,7 +45,8 @@ public class RestServiceSupervisor {
     @Path("/{studentId}")
     @Produces(MediaType.APPLICATION_JSON)
     
-    public SupervisorREST getStudentSupervisor(@PathParam("studentId") String studentId) {
+    public Response getStudentSupervisor(@PathParam("studentId") String studentId) {
+        //get student by querying the db.
         List<Student> studentResultList = em.createNamedQuery("findStudentWithSussexId").
                 setParameter("sussexId", studentId).
                 getResultList();
@@ -68,8 +70,12 @@ public class RestServiceSupervisor {
                     //wont happen.
                     supervisor = null;
                 }
+            } else {
+                //student does not have a project associated with. so supervisor not found.
+                return Response.status(Response.Status.NOT_FOUND).build(); 
             }
         
+            //map entity supervisor to SupervisorREST to return with JSON.
             SupervisorREST supervisorResult = new SupervisorREST();
         
             supervisorResult.setSussexId(supervisor.getSussexId());
@@ -78,20 +84,23 @@ public class RestServiceSupervisor {
             supervisorResult.setEmail(supervisor.getEmail());
             supervisorResult.setTelephone(supervisor.getTelephone());
         
-            return supervisorResult;
+            return Response.ok(supervisorResult).build();
             
         } else {
-            //will display no content response.
-            return null;
+            //student not found to return supervisor.
+            return Response.status(Response.Status.NOT_FOUND).build();    
         }
     }
     
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<SupervisorREST> getAllSupervisors() {
+    public Response getAllSupervisors() {
+        //get all supervisors by querying the db.
         List<Supervisor> supervisors = em.createNamedQuery("getAllSupervisors").getResultList();
         List<SupervisorREST> resultSupervisors = new ArrayList<>();
+        
+        //map entity supervisors to SupervisorREST to return with JSON.
         for (Supervisor s: supervisors) {
             SupervisorREST supervisorResult = new SupervisorREST();
         
@@ -104,6 +113,6 @@ public class RestServiceSupervisor {
             resultSupervisors.add(supervisorResult);   
         }
         
-        return resultSupervisors;
+        return Response.ok(resultSupervisors).build();
     }
 }

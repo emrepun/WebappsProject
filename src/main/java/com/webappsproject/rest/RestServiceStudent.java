@@ -20,6 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
@@ -43,16 +44,20 @@ public class RestServiceStudent {
     @GET
     @Path("/{supervisorId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<StudentREST> getSupervisorStudents(@PathParam("supervisorId") String supervisorId) {
+    public Response getSupervisorStudents(@PathParam("supervisorId") String supervisorId) {
+        //get supervisors by querying the db.
         List<Supervisor> supervisors = em.createNamedQuery("findSupervisorWithSussexID").
                 setParameter("sussexId", supervisorId).
                 getResultList();
         
         if (!supervisors.isEmpty()) {
+            //if supervisor found get projects of the supervisor.
             Supervisor supervisor = supervisors.get(0);
             List<Project> projects = supervisor.getOwnedProjects();
             List<Student> students = new ArrayList<>();
 
+            //for each project, check if there is an associated student with it (applied or accepted)
+            //if so, add student to students.
             for (Project p: projects) {
                 if (p.getStudent() != null) {
                     students.add(p.getStudent());
@@ -61,6 +66,7 @@ public class RestServiceStudent {
 
             List<StudentREST> resultStudents = new ArrayList<>();
 
+            //map entity students to StudentREST to return with JSON.
             for (Student s: students) {
                 StudentREST temp = new StudentREST();
                 temp.setSussexId(s.getSussexId());
@@ -71,21 +77,23 @@ public class RestServiceStudent {
 
                 resultStudents.add(temp);
             }
-
-            return resultStudents;
+            
+            return Response.ok(resultStudents).build(); 
         } else {
-            //will display no content response.
-            return null;
+            //supervisor not found or this supervisor has no students.
+            return Response.status(Response.Status.NOT_FOUND).build();            
         }
     }
     
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<StudentREST> getAllStudents() {
+    public Response getAllStudents() {
+        //get all students by querying the db.
         List<Student> students = em.createNamedQuery("getAllStudents").getResultList();
         List<StudentREST> resultStudents = new ArrayList<>();
         
+        //map entity students to StudentREST to return with JSON.
         for (Student s: students) {
             StudentREST temp = new StudentREST();
             temp.setSussexId(s.getSussexId());
@@ -97,6 +105,6 @@ public class RestServiceStudent {
             resultStudents.add(temp);
         }
         
-        return resultStudents;
+        return Response.ok(resultStudents).build();
     }
 }

@@ -19,6 +19,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -49,14 +50,20 @@ public class RestServiceProject {
     @GET
     @Path("/{supervisorId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProjectREST> getSupervisorProjects(@PathParam("supervisorId") String supervisorId) {
-        System.out.println("this ran.");
-        System.out.println(supervisorId);
+    public Response getSupervisorProjects(@PathParam("supervisorId") String supervisorId) {
+        //get entityProjects by querying the db.
         List<Project> entityProjects = (List<Project>)em.createNamedQuery("findProjectsWithSupervisorId").
                 setParameter("sussexId", supervisorId).
                 getResultList();
+        
+        if (entityProjects.isEmpty()) {
+            //return not found if supervisor or projects found.
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        
         List<ProjectREST> restResult = new ArrayList<>();
         
+        //map entity projects to ProjectREST to return with JSON.
         for (Project p: entityProjects) {
             ProjectREST temp = new ProjectREST();
             temp.setTitle(p.getTitle());
@@ -66,19 +73,25 @@ public class RestServiceProject {
             
             restResult.add(temp);
         }
-        
-        return restResult;
+        return Response.ok(restResult).build();
     }
     
     @GET
     @Path("all")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProjectREST> getAllProjects() {
-        System.out.println("all ran.");
+    public Response getAllProjects() {
+        //get entityProjects by querying the db.
         List<Project> allProjects = (List<Project>)em.createNamedQuery("getAllProjects").
                 getResultList();
+        
+        if (allProjects.isEmpty()) {
+            //return not found if there are no projects created.
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        
         List<ProjectREST> restResult = new ArrayList<>();
         
+        //map entity projects to ProjectREST to return with JSON.
         for (Project p: allProjects) {
             ProjectREST temp = new ProjectREST();
             temp.setTitle(p.getTitle());
@@ -89,6 +102,6 @@ public class RestServiceProject {
             restResult.add(temp);
         }
         
-        return restResult;
+        return Response.ok(restResult).build();
     }
 }
