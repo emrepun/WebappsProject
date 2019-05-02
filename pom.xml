@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.392</groupId>
-    <artifactId>WebappsProject</artifactId>
+    <artifactId>webapps2019</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>WebappsProject</name>
+    <name>webapps2019</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
