@@ -7,6 +7,7 @@ package com.webappsproject.ejb;
 import com.webappsproject.entity.ProjectTopic;
 
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,6 +17,7 @@ import javax.persistence.PersistenceContext;
  * @author emrehavan
  */
 @Stateless
+//all users can access this service.
 public class ProjectTopicService {
     
     @PersistenceContext

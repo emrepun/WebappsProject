@@ -43,7 +43,6 @@ public class StudentProjectListBean implements Serializable {
             selected = "";
         } else {
             selected = availableProjects.get(0).getName();
-            proposalService.setSelectedProject(selected);
         }
     }
     
@@ -57,7 +56,7 @@ public class StudentProjectListBean implements Serializable {
 
     public void setSelected(String selected) {
         this.selected = selected;
-        proposalService.setSelectedProject(this.selected);
+        //proposalService.setSelectedProject(this.selected);
         System.out.println("Selected project: " + this.selected);
     }
 
@@ -79,7 +78,7 @@ public class StudentProjectListBean implements Serializable {
     
     public void applyForProject() {
         System.out.println("applied for project");
-        int result = proposalService.applyForProjectWithName();
+        int result = proposalService.applyForProjectWithName(selected);
         switch (result) {
             case -1:
                 context.addMessage(null, new FacesMessage("You already have a project."));

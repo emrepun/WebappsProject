@@ -10,6 +10,7 @@ import com.webappsproject.entity.Student;
 import com.webappsproject.entity.Supervisor;
 
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Singleton;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
@@ -20,6 +21,7 @@ import javax.persistence.PersistenceContext;
  * @author emrehavan
  */
 @Singleton
+@RolesAllowed({"supervisor", "student"}) //only supervisors and students can use this service.
 public class ProjectCreationService {
     
     @PersistenceContext
@@ -30,6 +32,7 @@ public class ProjectCreationService {
     }
     
     // Used by supervisors
+    @RolesAllowed({"supervisor"})
     public void createProjectProposal(String supervisorID, String topicName, String projectName, String projectDesc, String projectSkills) {
        ProjectTopic topic = (ProjectTopic)em.createNamedQuery("findProjectTopicWithName").setParameter("topicname", topicName).getResultList().get(0);
        Supervisor supervisor = (Supervisor)em.createNamedQuery("findSupervisorWithSussexID").setParameter("sussexId", supervisorID).getResultList().get(0);
@@ -48,6 +51,7 @@ public class ProjectCreationService {
     }
     
     // Used by students
+    @RolesAllowed({"student"})
     public int createStudentProposal(String topicName,
             String supervisorId,
             String projectName,

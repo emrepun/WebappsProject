@@ -36,10 +36,8 @@
                     #{project.status}
             </h:column>    
             </h:dataTable>
-            </h:form>
             <br/>
             Select an available project to apply.
-            <h:form>
             <h:selectOneMenu value ="#{studentProjectListBean.selected}">
                 <f:selectItems value="#{studentProjectListBean.availableProjects}" var="project" itemValue="#{project.name}"/>
                 <f:ajax execute="@this" render="projectList"/>

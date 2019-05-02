@@ -13,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,11 +24,11 @@ import javax.persistence.PersistenceContext;
  * @author emrehavan
  */
 @Stateless
+@RolesAllowed({"admin"}) //only admins can use this service.
 public class AdminService {
     
     @PersistenceContext
     EntityManager em;
-    
     
     public AdminService() {
         

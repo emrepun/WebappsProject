@@ -9,6 +9,7 @@ import com.webappsproject.entity.SystemUserGroup;
 import com.webappsproject.entity.Student;
 import java.security.MessageDigest;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 
 import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
@@ -29,6 +30,7 @@ public class StudentService {
         
     }
     
+    @RolesAllowed({"admin"}) //only admins can register a student
     public int registerStudent(
             String sussexId,
             String password,

@@ -6,6 +6,7 @@
 package com.webappsproject.jsf;
 
 import com.webappsproject.ejb.AdminService;
+import com.webappsproject.ejb.LogoutService;
 import com.webappsproject.ejb.StudentService;
 import com.webappsproject.ejb.SupervisorService;
 import com.webappsproject.ejb.ProjectTopicService;
@@ -40,6 +41,9 @@ public class AdminHomeBean implements Serializable {
     @EJB
     ProjectTopicService projectTopicService;
     
+    @EJB
+    LogoutService logoutService;
+    
     public AdminHomeBean() {
         
     }
@@ -58,6 +62,10 @@ public class AdminHomeBean implements Serializable {
     
     public List<ProjectTopic> getProjectTopicList() {
         return projectTopicService.getProjectTopicList();
+    }
+    
+    public String logout() {
+        return logoutService.logout();
     }
     
 }

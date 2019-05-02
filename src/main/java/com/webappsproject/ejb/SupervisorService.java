@@ -13,6 +13,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,6 +24,7 @@ import javax.persistence.PersistenceContext;
  * @author emrehavan
  */
 @Stateless
+@RolesAllowed({"admin", "student"}) //only admins and students can use this service.
 public class SupervisorService {
     
     @PersistenceContext
@@ -32,7 +34,6 @@ public class SupervisorService {
         
     }
     
-    //return 1 for success, 0 for failure.
     public int registerSupervisor(
             String sussexId,
             String password,

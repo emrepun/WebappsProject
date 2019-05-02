@@ -6,28 +6,40 @@
 package com.webappsproject.jsf;
 
 import com.webappsproject.ejb.AdminService;
+import com.webappsproject.entity.Admin;
+import com.webappsproject.entity.SystemUser;
+import com.webappsproject.entity.SystemUserGroup;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+
 
 /**
  *
  * @author emrehavan
  */
-@Singleton
 @Named
+@Singleton
+//This bean is triggered from index by referring to welcomeString,
+//so that this bean would be initialized to register admin1 if it does not exists.
 public class InitialBean implements Serializable {
     
-    @EJB
-    AdminService adminService;
+    @PersistenceContext
+    EntityManager em;
+    
+    private String welcomeString = "Welcome to Msc Project System!";
     
     public InitialBean() {
         
@@ -36,28 +48,51 @@ public class InitialBean implements Serializable {
     @PostConstruct
     public void initial() {
         System.out.println("created");
-        adminService.registerAdmin("admin1", "admin1");
+
+        try {
+            SystemUser sys_user;
+            SystemUserGroup sys_user_group;
+            Admin admin;
+
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            String passwd = "admin1";
+            md.update(passwd.getBytes("UTF-8"));
+            byte[] digest = md.digest();
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < digest.length; i++) {
+                sb.append(Integer.toString((digest[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            String paswdToStoreInDB = sb.toString();
+
+            sys_user = new SystemUser("admin1", paswdToStoreInDB);
+            sys_user_group = new SystemUserGroup("admin1", "admin");
+            admin = new Admin("admin1", paswdToStoreInDB);
+            
+            em.persist(sys_user);
+            em.persist(sys_user_group);
+            em.persist(admin);
+            System.out.println("Admin Registration Completed");
+            
+        } catch (UnsupportedEncodingException | NoSuchAlgorithmException ex) {
+            Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Admin already registered");
+        }
+        
+        
+        
+        //String supervisorID = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+                
+        //adminService.registerAdmin("admin1", "admin1");
 //        if (adminService.getAdminWithUsername("admin1") == null) {
 //            adminService.registerAdmin("admin1", "admin1");
 //        }
+    }  
+
+    public String getWelcomeString() {
+        return welcomeString;
     }
 
-    public String loginSelected() {
-        return "login";
-    }    
-    
-    public String logout() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-        try {
-            //this method will disassociate the principal from the session (effectively logging him/her out)
-            request.logout();
-            request.getSession(true).invalidate();
-            context.addMessage(null, new FacesMessage("User is logged out"));
-            return "index";
-        } catch (ServletException e) {
-            context.addMessage(null, new FacesMessage("Logout failed."));
-            return "";
-        }
+    public void setWelcomeString(String welcomeString) {
+        this.welcomeString = welcomeString;
     }
 }

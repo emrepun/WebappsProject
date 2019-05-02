@@ -11,6 +11,7 @@ import com.webappsproject.entity.Supervisor;
 import com.webappsproject.entity.Student;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 
 import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
@@ -21,6 +22,7 @@ import javax.persistence.PersistenceContext;
  * @author emrehavan
  */
 @Singleton
+@RolesAllowed({"supervisor"}) //only supervisors can access to this service.
 public class ProjectApplicationReviewService {
     
     private String selectedProjectApplication;
@@ -48,7 +50,6 @@ public class ProjectApplicationReviewService {
     public void setStudent(String studentId) {
         this.studentId = studentId;
     }
-    
     
     //Get applications made to projects created by a supervisor.
     public synchronized List<Project> getApplicationsForSupervisor(String sussexId) {

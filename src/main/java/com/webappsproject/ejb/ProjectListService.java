@@ -18,6 +18,7 @@ import javax.persistence.PersistenceContext;
  * @author emrehavan
  */
 @Singleton
+//this service is available for all user types.
 public class ProjectListService {
     
     private String selectedProjectTopic;

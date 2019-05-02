@@ -5,6 +5,7 @@
  */
 package com.webappsproject.jsf;
 
+import com.webappsproject.ejb.LogoutService;
 import com.webappsproject.ejb.ProjectApplicationReviewService;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -26,6 +27,9 @@ public class SupervisorHomeBean implements Serializable {
     @EJB
     ProjectApplicationReviewService service; 
     
+    @EJB
+    LogoutService logoutService;
+    
     @PostConstruct
     public void init() {
         //get currently logged-in supervisor and proposed applications amount.
@@ -36,9 +40,7 @@ public class SupervisorHomeBean implements Serializable {
             notification = "You have " + applicationAmount + " proposals made by students, go to Student Proposals page to display.";
         } else {
             notification = "You dont have any notifications.";
-        }
-        
-        
+        }   
     }
     
     public SupervisorHomeBean() {
@@ -53,4 +55,7 @@ public class SupervisorHomeBean implements Serializable {
         this.notification = notification;
     }
     
+    public String logout() {
+        return logoutService.logout();
+    }
 }
