@@ -22,7 +22,8 @@ import javax.inject.Named;
 @RequestScoped
 public class SupervisorHomeBean implements Serializable {
     
-    private String notification;
+    private String studentProposedNotification;
+    private String ownedApplicationNotification;
     
     @EJB
     ProjectApplicationReviewService service; 
@@ -34,25 +35,40 @@ public class SupervisorHomeBean implements Serializable {
     public void init() {
         //get currently logged-in supervisor and proposed applications amount.
         String supervisorID = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-        int applicationAmount = service.getStudentProposedApplicationsForSupervisor(supervisorID).size();
+        int studentProposalApplicationAmount = service.getStudentProposedApplicationsForSupervisor(supervisorID).size();
+        int ownedProjectApplicationAmount = service.getApplicationsForSupervisor(supervisorID).size();
         
-        if (applicationAmount > 0) {
-            notification = "You have " + applicationAmount + " proposals made by students, go to Student Proposals page to display.";
+        if (studentProposalApplicationAmount > 0) {
+            studentProposedNotification = "You have " + studentProposalApplicationAmount + " proposals made by students, go to Student Proposals page to view.";
         } else {
-            notification = "You dont have any notifications.";
-        }   
+            studentProposedNotification = "You dont have any student proposal notifications.";
+        }
+        
+        if (ownedProjectApplicationAmount > 0) {
+            ownedApplicationNotification = "You have " + ownedProjectApplicationAmount + " applications to your projects, go to Display Applications page to view.";
+        } else {
+            ownedApplicationNotification = "You dont have any applications to your projects.";
+        }
     }
     
     public SupervisorHomeBean() {
         
     }
 
-    public String getNotification() {
-        return notification;
+    public String getStudentProposedNotification() {
+        return studentProposedNotification;
     }
 
-    public void setNotification(String notification) {
-        this.notification = notification;
+    public void setStudentProposedNotification(String notification) {
+        this.studentProposedNotification = notification;
+    }
+
+    public String getOwnedApplicationNotification() {
+        return ownedApplicationNotification;
+    }
+
+    public void setOwnedApplicationNotification(String ownedApplicationNotification) {
+        this.ownedApplicationNotification = ownedApplicationNotification;
     }
     
     public String logout() {
