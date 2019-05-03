@@ -8,6 +8,7 @@ com/webappsproject/rest/entities/ProjectREST.class
 com/webappsproject/entity/Student.class
 com/webappsproject/jsf/ProjectListDisplayBean.class
 com/webappsproject/jsf/StudentProjectCreationBean.class
+com/webappsproject/jsf/SupervisorOwnedStudentsBean.class
 com/webappsproject/entity/SystemUserGroup_.class
 com/webappsproject/entity/ProjectTopic_.class
 com/webappsproject/entity/Project$ProjectStatus.class

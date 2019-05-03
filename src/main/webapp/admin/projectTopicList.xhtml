@@ -31,7 +31,7 @@
             </h:selectOneMenu>
         </h:form>
         <h:form>
-            <h:commandButton value = "Show Proposals" action = "projectList" /> 
+            <h:commandButton value = "Show Proposals" action = "#{projectTopicDisplayBean.displayListForTopic}" /> 
         </h:form>
         <h:button id="projectTopicListBackButton" title="Go Back" value="Go Back" outcome="adminHome"/>
     </h:body>

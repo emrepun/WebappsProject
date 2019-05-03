@@ -35,6 +35,7 @@
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/rest/entities/SupervisorREST.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/ProjectTopicCreationBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/entity/Student.java
+/Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/SupervisorOwnedStudentsBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/ejb/ProjectTopicService.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/jsf/StudentProjectListBean.java
 /Users/emrehavan/Desktop/JavaProjects/WebAppsAndServices/webapps2019/src/main/java/com/webappsproject/ejb/ProjectCreationService.java

@@ -71,4 +71,12 @@ public class ProjectTopicDisplayBean implements Serializable {
     public void setProjectTopics(List<ProjectTopic> projectTopics) {
         this.projectTopics = projectTopics;
     }
+    
+    public String displayListForTopic() {
+        if (projectTopics.isEmpty()) {
+            return "";
+        } else {
+            return "projectList";
+        }
+    }
 }
