@@ -45,7 +45,7 @@ public class SupervisorHomeBean implements Serializable {
         }
         
         if (ownedProjectApplicationAmount > 0) {
-            ownedApplicationNotification = "You have " + ownedProjectApplicationAmount + " applications to your projects, go to Display Applications page to view.";
+            ownedApplicationNotification = "You have " + ownedProjectApplicationAmount + " applications to your projects, go to Project Applications page to view.";
         } else {
             ownedApplicationNotification = "You dont have any applications to your projects.";
         }

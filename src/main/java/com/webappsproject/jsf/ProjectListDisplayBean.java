@@ -11,6 +11,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -27,11 +29,17 @@ public class ProjectListDisplayBean {
     @EJB
     ProjectListService projectListService;
     
+    FacesContext context = FacesContext.getCurrentInstance();
+    
     @PostConstruct
     public void init() {
         this.topicName = projectListService.getSelectedProjectTopic();
         if (this.topicName != null) {
             this.projects = projectListService.getProjectsForProjectTopicName(topicName);
+            
+            if (projects.isEmpty()) {
+                context.addMessage(null, new FacesMessage("There are no projects for this topic."));
+            }
         }
     }
     

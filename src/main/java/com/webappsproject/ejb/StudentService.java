@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 package com.webappsproject.ejb;
+import com.webappsproject.entity.Project;
 import com.webappsproject.entity.SystemUser;
 import com.webappsproject.entity.SystemUserGroup;
 import com.webappsproject.entity.Student;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 
@@ -80,6 +82,25 @@ public class StudentService {
         System.out.println(sussexId);
         return (Student)em.createNamedQuery("findStudentWithSussexId").setParameter("sussexId", sussexId)
                 .getResultList().get(0);
+    }
+    
+    public synchronized List<Student> getStudentsForSupervisor(String supervisorId) {
+        //get projects of supervisor first because students and supervisors are connected through projects.
+        List<Project> supervisorProjects = new ArrayList<>();
+        supervisorProjects = em.createNamedQuery("findProjectsWithSupervisorId").
+                setParameter("sussexId", supervisorId).
+                getResultList();
+        
+        ArrayList<Student> students = new ArrayList<>();
+        
+        // get projects with confirmed students and add them to students result.
+        for (Project p: supervisorProjects) {
+            if (p.getStudent() != null) {
+                students.add(p.getStudent());
+            }
+        }
+        
+        return students;
     }
     
 }

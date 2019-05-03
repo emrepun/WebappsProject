@@ -121,9 +121,7 @@ public class StudentProjectCreationBean {
     }
     
     public void submit() {
-        //System.out.println(selectedTopicName);
-        //System.out.println(topicName);
-        //System.out.println(projectCreationService.getSelectedTopicName());
+        System.out.println("here");
         int result = projectCreationService.createStudentProposal(
                 selectedTopicName,
                 selectedSupervisorId,
@@ -131,6 +129,7 @@ public class StudentProjectCreationBean {
                 projectDescription,
                 requiredSkills);
         
+        System.out.println("seems alright.");
         switch (result) {
             case 1:
                 System.out.println("success");

@@ -36,11 +36,13 @@
             <h:commandButton id="displayStudentProjectApplications" type="submit" value="Student Proposals" action="supervisorStudentProposedProjectApplicationList" title="Student Proposals"/>
         </h:form>
         <br/>
-        Access Projects:
+        Access Project and Student Reports:
         <h:form>
             <h:commandButton id="displayProjectTopics" type="submit" value="Display Project Topics" action="supervisorProjectTopicList" title="Display Project Topics"/>
             <br/>
             <h:commandButton id="displayOwnedProjects" type="submit" value="Display Owned Projects" action="supervisorOwnedProjectList" title="Display Owned Projects"/>
+            <br/>
+            <h:commandButton id="displayOwnedStudents" type="submit" value="Display Supervised Students" action="supervisorOwnedStudentList" title="Display Supervised Students"/>
             <br/>
             <h:commandButton value="Logout" action="#{supervisorHomeBean.logout}"/>
         </h:form>
