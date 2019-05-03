@@ -23,12 +23,15 @@ import javax.inject.Named;
 @RequestScoped
 public class SupervisorOwnedStudentsBean {
     
+    //declare properties.
     private List<Student> supervisedStudents;
     private String supervisorID;
     
+    //inject services.
     @EJB
     StudentService studentService;        
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct

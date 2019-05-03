@@ -23,12 +23,15 @@ import javax.inject.Named;
 @RequestScoped
 public class SupervisorStudentProposedApplicationListBean {
     
+    //declare properties.
     private List<Project> applications;
     private String selected;
     
+    //inject services.
     @EJB
     ProjectApplicationReviewService applicationService;  
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct
@@ -40,7 +43,6 @@ public class SupervisorStudentProposedApplicationListBean {
             selected = applications.get(0).getName();
             applicationService.setSelectedProjectApplication(selected);
         } else {
-            System.out.println("this run 2");
             selected = "";
             context.addMessage(null, new FacesMessage("There are no student project proposals."));
         }

@@ -25,13 +25,16 @@ import javax.inject.Named;
 @RequestScoped
 public class StudentProjectListBean implements Serializable {
     
+    //declare properties.
     private String selected;
     private List<Project> projects;
     private List<Project> availableProjects;
     
+    //inject services.
     @EJB
     ProjectProposalService proposalService;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct
@@ -79,6 +82,7 @@ public class StudentProjectListBean implements Serializable {
     public void applyForProject() {
         System.out.println("applied for project");
         int result = proposalService.applyForProjectWithName(selected);
+        //inform student depending on the outcome of the method.
         switch (result) {
             case -1:
                 context.addMessage(null, new FacesMessage("You already have a project."));

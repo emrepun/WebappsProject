@@ -25,6 +25,7 @@ import javax.persistence.PersistenceContext;
 @RolesAllowed({"student"}) //only students are allowed to use this service.
 public class ProjectProposalService {
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     

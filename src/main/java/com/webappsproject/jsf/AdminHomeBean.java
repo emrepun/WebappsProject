@@ -29,6 +29,7 @@ import javax.inject.Named;
 @RequestScoped
 public class AdminHomeBean implements Serializable {
     
+    //inject required services.
     @EJB
     AdminService adminService;
     
@@ -64,6 +65,7 @@ public class AdminHomeBean implements Serializable {
         return projectTopicService.getProjectTopicList();
     }
     
+    //logout admin.
     public String logout() {
         return logoutService.logout();
     }

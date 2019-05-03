@@ -18,6 +18,7 @@ import javax.inject.Named;
 @RequestScoped
 public class StudentHomeBean {
     
+    //inject services.
     @EJB
     LogoutService logoutService;
     

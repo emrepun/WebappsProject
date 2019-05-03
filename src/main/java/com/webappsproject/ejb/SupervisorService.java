@@ -27,6 +27,7 @@ import javax.persistence.PersistenceContext;
 @RolesAllowed({"admin", "student"}) //only admins and students can use this service.
 public class SupervisorService {
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     

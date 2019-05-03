@@ -22,9 +22,11 @@ import javax.inject.Named;
 @RequestScoped
 public class SupervisorHomeBean implements Serializable {
     
+    //declare properties.
     private String studentProposedNotification;
     private String ownedApplicationNotification;
     
+    //inject services.
     @EJB
     ProjectApplicationReviewService service; 
     

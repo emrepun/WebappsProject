@@ -21,8 +21,10 @@ import javax.persistence.PersistenceContext;
 //this service is available for all user types.
 public class ProjectListService {
     
+    //declare properties.
     private String selectedProjectTopic;
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     

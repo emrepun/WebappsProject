@@ -22,11 +22,14 @@ import javax.inject.Named;
 @RequestScoped
 public class AdminRegistrationBean implements Serializable {
     
+    //inject services.
     @EJB
     AdminService adminService;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
+    //declare properties.
     String username;
     String password;
     
@@ -34,6 +37,7 @@ public class AdminRegistrationBean implements Serializable {
         
     }
     
+    //register admin.
     public void register() {
         adminService.registerAdmin(username, password);
         context.addMessage(null, new FacesMessage("Admin is created."));

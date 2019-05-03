@@ -26,6 +26,7 @@ import javax.inject.Named;
 @RequestScoped
 public class ProjectProposalCreationBean implements Serializable {
     
+    //inject services.
     @EJB
     ProjectTopicService projectTopicService;
     
@@ -34,6 +35,7 @@ public class ProjectProposalCreationBean implements Serializable {
     
     FacesContext context = FacesContext.getCurrentInstance();
     
+    //declare properties.
     private List<ProjectTopic> projectTopics;
     private String selected;
     

@@ -25,12 +25,15 @@ import javax.inject.Named;
 @RequestScoped
 public class SupervisorApplicationListBean implements Serializable {
     
+    //declare properties.
     private List<Project> applications;
     private String selected;
     
+    //inject services.
     @EJB
     ProjectApplicationReviewService applicationService;        
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct
@@ -38,11 +41,9 @@ public class SupervisorApplicationListBean implements Serializable {
         String supervisorID = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
         applications = applicationService.getApplicationsForSupervisor(supervisorID);
         if (!applications.isEmpty()) {
-            System.out.println("this run 1");
             selected = applications.get(0).getName();
             applicationService.setSelectedProjectApplication(selected);
         } else {
-            System.out.println("this run 2");
             context.addMessage(null, new FacesMessage("There are no applications."));
             selected = "";
         }

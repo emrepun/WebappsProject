@@ -64,6 +64,7 @@ public class InitialBean implements Serializable {
             }
             String paswdToStoreInDB = sb.toString();
 
+            //register admin as sys_user, also in group to indicate role and admin table.
             sys_user = new SystemUser("admin1", paswdToStoreInDB);
             sys_user_group = new SystemUserGroup("admin1", "admin");
             admin = new Admin("admin1", paswdToStoreInDB);
@@ -77,15 +78,6 @@ public class InitialBean implements Serializable {
             Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Admin already registered");
         }
-        
-        
-        
-        //String supervisorID = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-                
-        //adminService.registerAdmin("admin1", "admin1");
-//        if (adminService.getAdminWithUsername("admin1") == null) {
-//            adminService.registerAdmin("admin1", "admin1");
-//        }
     }  
 
     public String getWelcomeString() {

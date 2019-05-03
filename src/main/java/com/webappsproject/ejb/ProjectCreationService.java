@@ -24,6 +24,7 @@ import javax.persistence.PersistenceContext;
 @RolesAllowed({"supervisor", "student"}) //only supervisors and students can use this service.
 public class ProjectCreationService {
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     
@@ -34,9 +35,14 @@ public class ProjectCreationService {
     // Used by supervisors
     @RolesAllowed({"supervisor"})
     public void createProjectProposal(String supervisorID, String topicName, String projectName, String projectDesc, String projectSkills) {
+        //get topic and supervisor.
        ProjectTopic topic = (ProjectTopic)em.createNamedQuery("findProjectTopicWithName").setParameter("topicname", topicName).getResultList().get(0);
        Supervisor supervisor = (Supervisor)em.createNamedQuery("findSupervisorWithSussexID").setParameter("sussexId", supervisorID).getResultList().get(0);
+       
+       //initialize a project object with given parameters.
        Project proj = new Project(projectName, projectDesc, projectSkills);
+       
+       //make necessary settings.
        proj.setProjectTopic(topic);
        proj.setSupervisor(supervisor);
        proj.setStudent(null);
@@ -88,8 +94,10 @@ public class ProjectCreationService {
             em.persist(supervisor);
             em.persist(project);
             em.persist(student);
+            //return 1 for success.
             return 1;
         } else {
+            //return 0 for failure.
             return 0;
         }
         

@@ -20,6 +20,7 @@ import javax.persistence.PersistenceContext;
 //all users can access this service.
 public class ProjectTopicService {
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     

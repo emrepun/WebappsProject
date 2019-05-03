@@ -25,15 +25,18 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class ProjectTopicDisplayBean implements Serializable {
     
+    //declare properties.
     private String selected;
     private List<ProjectTopic> projectTopics;
     
+    //inject services.
     @EJB
     ProjectTopicService projectTopicService;
     
     @EJB
     ProjectListService projectListService;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct
@@ -72,6 +75,7 @@ public class ProjectTopicDisplayBean implements Serializable {
         this.projectTopics = projectTopics;
     }
     
+    //navigate next page if projectTopics are not empty.
     public String displayListForTopic() {
         if (projectTopics.isEmpty()) {
             return "";

@@ -27,6 +27,7 @@ import javax.persistence.PersistenceContext;
 @RolesAllowed({"admin"}) //only admins can use this service.
 public class AdminService {
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     
@@ -64,12 +65,6 @@ public class AdminService {
             
         }
     }
-    
-//    public synchronized Admin getAdminWithUsername(String username) {
-//        return (Admin)em.createNamedQuery("findAdminWithUsername").
-//                setParameter("username", username).
-//                getResultList().get(0);
-//    }
     
     public synchronized List<Admin> getAdminList() {
         return em.createNamedQuery("getAllAdmins").getResultList();

@@ -26,6 +26,7 @@ import javax.inject.Named;
 @RequestScoped
 public class StudentProjectCreationBean {
     
+    //declare properties.
     private String selectedTopicName;
     private String selectedSupervisorId;
     private List<ProjectTopic> topics;
@@ -35,7 +36,7 @@ public class StudentProjectCreationBean {
     private String projectDescription;
     private String requiredSkills;
     
-    
+    //inject services.
     @EJB
     ProjectTopicService topicService;
     
@@ -45,6 +46,7 @@ public class StudentProjectCreationBean {
     @EJB
     ProjectCreationService projectCreationService;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct
@@ -120,8 +122,9 @@ public class StudentProjectCreationBean {
         this.requiredSkills = requiredSkills;
     }
     
+    //propose project to a supervisor.
     public void submit() {
-        System.out.println("here");
+        
         int result = projectCreationService.createStudentProposal(
                 selectedTopicName,
                 selectedSupervisorId,
@@ -129,10 +132,10 @@ public class StudentProjectCreationBean {
                 projectDescription,
                 requiredSkills);
         
-        System.out.println("seems alright.");
+        //inform student depending on the outcome of the method.
         switch (result) {
             case 1:
-                System.out.println("success");
+                System.out.println("Student Project Proposal has been made successfully.");
                 context.addMessage(null, new FacesMessage("Proposal sent successfully."));
                 break;
             case 0:

@@ -25,9 +25,11 @@ import javax.persistence.PersistenceContext;
 @RolesAllowed({"supervisor"}) //only supervisors can access to this service.
 public class ProjectApplicationReviewService {
     
+    //declare properties.
     private String selectedProjectApplication;
     private String studentId;
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     
@@ -53,11 +55,16 @@ public class ProjectApplicationReviewService {
     
     //Get applications made to projects created by a supervisor.
     public synchronized List<Project> getApplicationsForSupervisor(String sussexId) {
+        //get the supervisor.
         Supervisor supervisor = (Supervisor)em.createNamedQuery("findSupervisorWithSussexID").
                 setParameter("sussexId", sussexId).
                 getResultList().get(0);
+        
+        //get all projects of the supervisor.
         List<Project> allProjects = supervisor.getOwnedProjects();
         List<Project> appliedProjects = new ArrayList();
+        
+        //add projects with PROPOSED status to appliedProjects list.
         for (Project p: allProjects) {
             if (p.getStatus() == Project.ProjectStatus.PROPOSED) {
                 appliedProjects.add(p);

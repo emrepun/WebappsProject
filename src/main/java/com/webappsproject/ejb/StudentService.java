@@ -25,6 +25,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class StudentService {
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     

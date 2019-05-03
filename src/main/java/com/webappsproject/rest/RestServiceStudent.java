@@ -34,6 +34,7 @@ public class RestServiceStudent {
     @Context
     private UriInfo context;
     
+    //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
     

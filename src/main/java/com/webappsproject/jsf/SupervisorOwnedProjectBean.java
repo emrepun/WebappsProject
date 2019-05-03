@@ -24,12 +24,15 @@ import javax.inject.Named;
 @RequestScoped
 public class SupervisorOwnedProjectBean implements Serializable {
     
+    //declare properties.
     private List<Project> ownedProjects;
     private String supervisorID;
     
+    //inject services.
     @EJB
     ProjectListService projectListService;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct

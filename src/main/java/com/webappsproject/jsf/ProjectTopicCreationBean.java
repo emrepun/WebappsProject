@@ -21,11 +21,14 @@ import javax.inject.Named;
 @RequestScoped
 public class ProjectTopicCreationBean implements Serializable {
     
+    //inject services.
     @EJB
     ProjectTopicService topicService;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
+    //declare properties.
     String topicname;
     String topicDescription;
     
@@ -34,7 +37,9 @@ public class ProjectTopicCreationBean implements Serializable {
     }
     
     public void register() {
+        //register topic and get result indicator int.
         int result = topicService.registerTopic(topicname, topicDescription);
+        //display informative message to view depending on the outcome.
         switch (result) {
             case 0:
                 context.addMessage(null, new FacesMessage("This topic already exists."));

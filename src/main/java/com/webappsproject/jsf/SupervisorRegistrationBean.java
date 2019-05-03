@@ -21,17 +21,20 @@ import javax.inject.Named;
 @RequestScoped
 public class SupervisorRegistrationBean implements Serializable {
     
+    //inject services.
     @EJB
     SupervisorService supervisorService;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
-    String sussexId;
-    String password;
-    String name;
-    String surname;
-    String email;
-    String telephone;
+    //declare properties.
+    private String sussexId;
+    private String password;
+    private String name;
+    private String surname;
+    private String email;
+    private String telephone;
     
     public SupervisorRegistrationBean() {
         

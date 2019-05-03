@@ -23,12 +23,15 @@ import javax.inject.Named;
 @RequestScoped
 public class ProjectListDisplayBean {
     
+    //declare properties.
     private String topicName;
     private List<Project> projects;
     
+    //inject services.
     @EJB
     ProjectListService projectListService;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct

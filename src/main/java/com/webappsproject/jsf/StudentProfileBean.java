@@ -24,15 +24,19 @@ import javax.inject.Named;
 @RequestScoped
 public class StudentProfileBean implements Serializable {
     
+    //declare properties.
     private Student student;
     
+    //inject services.
     @EJB
     StudentService service;
     
+    //get current context.
     FacesContext context = FacesContext.getCurrentInstance();
     
     @PostConstruct
     public void init() {
+        //check student and project status to display informative message on view.
         this.student = service.getLoggedInStudent();
         Project project = this.student.getAssociatedProject();
         if (project != null) {
