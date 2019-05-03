@@ -19,12 +19,12 @@
             </h:selectOneMenu>
             <br/>
             <h:outputLabel for="projectName" value="*Name:"/>
-            <h:inputText id ="projectName" value="#{projectProposalCreationBean.name}" title="Enter project name" required="true" requiredMessage="Mandatory Field"/>
+            <h:inputText id ="projectName" value="#{projectProposalCreationBean.name}" title="Enter project name" maxlength="200" required="true" requiredMessage="Mandatory Field"/>
             &nbsp; 
             <h:message style="color:red" for="projectName"/>
             <br/>
             <h:outputLabel for="projectDesc" value="*Description"/>
-            <h:inputText id ="projectDesc" value="#{projectProposalCreationBean.description}" title="Enter project description" label="description" required="true" requiredMessage="Mandatory Field"/>
+            <h:inputText id ="projectDesc" value="#{projectProposalCreationBean.description}" title="Enter project description" maxlength="1000" label="description" required="true" requiredMessage="Mandatory Field"/>
             &nbsp; 
             <h:message style="color:red" for="projectDesc"/>
             <br/>

@@ -12,12 +12,12 @@
             Fill in the details and press the register button.
             <br/>
             <h:outputLabel for="topicname" value="*Topic Name:"/>
-            <h:inputText id ="topicname" value="#{projectTopicCreationBean.topicname}" title="Enter project topic name" required="true" requiredMessage="Mandatory Field"/>
+            <h:inputText id ="topicname" value="#{projectTopicCreationBean.topicname}" title="Enter project topic name" maxlength="100" required="true" requiredMessage="Mandatory Field"/>
             &nbsp; 
             <h:message style="color:red" for="topicname"/>
             <br/>
             <h:outputLabel for="topicDescription" value="*Topic Description"/>
-            <h:inputText id ="topicDescription" value="#{projectTopicCreationBean.topicDescription}" title="Enter project topic description" required="true" requiredMessage="Mandatory Field"/>
+            <h:inputText id ="topicDescription" value="#{projectTopicCreationBean.topicDescription}" title="Enter project topic description" maxlength="1000" required="true" requiredMessage="Mandatory Field"/>
             &nbsp; 
             <h:message style="color:red" for="topicname"/>
             <br/>

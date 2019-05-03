@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -39,11 +40,15 @@ public class ProjectTopic {
     private Long id;
     
     //make sure there are no duplicates in DB by topicname column
+    //and max character allowed = 100
     @NotNull
     @Column(name="topicname", unique=true)
+    @Size(min=0, max=100)
     private String topicname;
     
+    //max character allowed = 1000
     @NotNull
+    @Size(min=0, max=1000)
     private String topicDescription;
     
     @OneToMany(

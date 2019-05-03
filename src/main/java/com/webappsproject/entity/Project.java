@@ -21,6 +21,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -44,11 +45,15 @@ public class Project {
     private Long id;
     
     //make sure there are no duplicates in DB by title column
+    //and max character allowed = 200
     @NotNull
     @Column(name="title", unique=true)
+    @Size(min=0, max=200)
     private String title;
     
+    //max character allowed = 1000
     @NotNull
+    @Size(min=0, max=1000)
     private String description;
     
     @NotNull
