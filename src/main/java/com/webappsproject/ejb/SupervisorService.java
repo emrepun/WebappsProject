@@ -35,6 +35,7 @@ public class SupervisorService {
         
     }
     
+    @RolesAllowed({"admin"})
     public int registerSupervisor(
             String sussexId,
             String password,

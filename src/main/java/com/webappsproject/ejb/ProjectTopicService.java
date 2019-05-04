@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
  * @author emrehavan
  */
 @Stateless
-//all users can access this service.
+@RolesAllowed({"admin", "supervisor", "student"})//all users can access this service.
 public class ProjectTopicService {
     
     //inject entity manager to interact with DB.
@@ -29,6 +29,7 @@ public class ProjectTopicService {
     }
     
     //return 1 for success, 0 for failure because duplicate.
+    @RolesAllowed({"admin", "supervisor"})
     public int registerTopic(String topicname, String topicDescription) {
         ProjectTopic topic = new ProjectTopic(topicname, topicDescription);
         try {

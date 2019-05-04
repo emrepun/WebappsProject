@@ -23,8 +23,8 @@ import javax.persistence.PersistenceContext;
  * @author emrehavan
  */
 @Stateless
+//all users can access this service.
 public class StudentService {
-    
     //inject entity manager to interact with DB.
     @PersistenceContext
     EntityManager em;
