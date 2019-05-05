@@ -38,8 +38,8 @@ public class ProjectListDisplayBean {
     public void init() {
         this.topicName = projectListService.getSelectedProjectTopic();
         if (this.topicName != null) {
+            System.out.println(this.topicName);
             this.projects = projectListService.getProjectsForProjectTopicName(topicName);
-            
             if (projects.isEmpty()) {
                 context.addMessage(null, new FacesMessage("There are no projects for this topic."));
             }

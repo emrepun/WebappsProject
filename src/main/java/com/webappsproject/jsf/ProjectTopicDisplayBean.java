@@ -44,7 +44,7 @@ public class ProjectTopicDisplayBean implements Serializable {
         projectTopics = projectTopicService.getProjectTopicList(); 
         if (projectTopics.isEmpty()) {
             context.addMessage(null, new FacesMessage("There are no project topics."));
-            selected = "";
+            selected = "empty";
         } else {
             selected = projectTopics.get(0).getTopicname();
         }
