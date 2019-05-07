@@ -16,6 +16,8 @@ public class StudentREST {
     private String surname;
     private String email;
     private String course;
+    private String project;
+    private String supervisor;
     
     public StudentREST() {
         
@@ -59,5 +61,21 @@ public class StudentREST {
 
     public void setCourse(String course) {
         this.course = course;
+    }
+
+    public String getProject() {
+        return project;
+    }
+
+    public void setProject(String project) {
+        this.project = project;
+    }
+
+    public String getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(String supervisor) {
+        this.supervisor = supervisor;
     }
 }

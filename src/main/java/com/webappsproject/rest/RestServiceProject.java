@@ -72,6 +72,21 @@ public class RestServiceProject {
             temp.setRequiredSkills(p.getRequiredSkills());
             temp.setProjectTopic(p.getProjectTopic().getTopicname());
             
+            //this field wont be missing because every project either has a supervisor,
+            //or an optional supervisor.
+            if (p.getSupervisor() != null) {
+                temp.setSupervisor(p.getSupervisor().getSussexId());
+            } else if (p.getSupervisorOptional() != null) {
+                temp.setSupervisor(p.getSupervisorOptional().getSussexId());
+            }
+            
+            // student will be missing from JSON if its null.
+            if (p.getStudent() == null) {
+                temp.setStudent(null);
+            } else {
+                temp.setStudent(p.getStudent().getSussexId());
+            }
+            
             restResult.add(temp);
         }
         return Response.ok(restResult).build();
@@ -99,6 +114,19 @@ public class RestServiceProject {
             temp.setDescription(p.getDescription());
             temp.setRequiredSkills(p.getRequiredSkills());
             temp.setProjectTopic(p.getProjectTopic().getTopicname());
+            
+            if (p.getSupervisor() != null) {
+                temp.setSupervisor(p.getSupervisor().getSussexId());
+            } else if (p.getSupervisorOptional() != null) {
+                temp.setSupervisor(p.getSupervisorOptional().getSussexId());
+            }
+            
+            // student will be missing from JSON if its null.
+            if (p.getStudent() == null) {
+                temp.setStudent(null);
+            } else {
+                temp.setStudent(p.getStudent().getSussexId());
+            }
             
             restResult.add(temp);
         }

@@ -17,6 +17,8 @@ public class ProjectREST {
     private String description;
     private String requiredSkills;
     private String projectTopic;
+    private String supervisor;
+    private String student;
 
     public ProjectREST() {
         
@@ -54,4 +56,19 @@ public class ProjectREST {
         this.projectTopic = projectTopic;
     }
 
+    public String getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(String supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    public String getStudent() {
+        return student;
+    }
+
+    public void setStudent(String student) {
+        this.student = student;
+    }
 }

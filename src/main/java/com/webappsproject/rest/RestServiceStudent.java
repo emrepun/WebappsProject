@@ -75,6 +75,19 @@ public class RestServiceStudent {
                 temp.setSurname(s.getSurname());
                 temp.setEmail(s.getEmail());
                 temp.setCourse(s.getCourse());
+                
+                // project and supervisor will be missing from JSON if its null.
+                if (s.getAssociatedProject() != null) {
+                    temp.setProject(s.getAssociatedProject().getName());
+                    if (s.getAssociatedProject().getSupervisor() != null) {
+                        temp.setSupervisor(s.getAssociatedProject().getSupervisor().getSussexId());
+                    } else {
+                        temp.setSupervisor(s.getAssociatedProject().getSupervisorOptional().getSussexId());
+                    }
+                } else {
+                    temp.setProject(null);
+                    temp.setSupervisor(null);
+                }
 
                 resultStudents.add(temp);
             }
@@ -102,6 +115,19 @@ public class RestServiceStudent {
             temp.setSurname(s.getSurname());
             temp.setEmail(s.getEmail());
             temp.setCourse(s.getCourse());
+            
+            // project and supervisor will be missing from JSON if its null.
+            if (s.getAssociatedProject() != null) {
+                    temp.setProject(s.getAssociatedProject().getName());
+                    if (s.getAssociatedProject().getSupervisor() != null) {
+                        temp.setSupervisor(s.getAssociatedProject().getSupervisor().getSussexId());
+                    } else {
+                        temp.setSupervisor(s.getAssociatedProject().getSupervisorOptional().getSussexId());
+                    }
+                } else {
+                    temp.setProject(null);
+                    temp.setSupervisor(null);
+                }
             
             resultStudents.add(temp);
         }

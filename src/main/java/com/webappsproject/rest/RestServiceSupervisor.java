@@ -110,6 +110,17 @@ public class RestServiceSupervisor {
             supervisorResult.setSurname(s.getSurname());
             supervisorResult.setEmail(s.getEmail());
             supervisorResult.setTelephone(s.getTelephone());
+            supervisorResult.setProjects(new ArrayList<String>());
+            
+            //projects will be missing from JSON if its empty because it will be set to null.
+            if (!s.getOwnedProjects().isEmpty()) {
+                for (Project p: s.getOwnedProjects()) {
+                    supervisorResult.getProjects().add(p.getName());
+                }
+            } else {
+                supervisorResult.setProjects(null);
+            }
+            
             
             resultSupervisors.add(supervisorResult);   
         }

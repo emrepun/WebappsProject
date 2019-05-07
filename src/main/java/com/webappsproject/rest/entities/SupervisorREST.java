@@ -5,6 +5,8 @@
  */
 package com.webappsproject.rest.entities;
 
+import java.util.List;
+
 /**
  *
  * @author emrehavan
@@ -16,6 +18,7 @@ public class SupervisorREST {
     private String surname;
     private String email;
     private String telephone;
+    private List<String> projects;
     
     public SupervisorREST() {
         
@@ -59,5 +62,13 @@ public class SupervisorREST {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    public List<String> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<String> projects) {
+        this.projects = projects;
     }
 }
